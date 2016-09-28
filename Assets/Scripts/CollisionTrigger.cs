@@ -12,6 +12,8 @@ public class CollisionTrigger : MonoBehaviour
 
     private BoxCollider2D _playerCollider;
 
+	public bool _collissionActive;
+
     // Use this for initialization
     void Start()
     {
@@ -24,7 +26,7 @@ public class CollisionTrigger : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 		//if (other.gameObject.name == "Monkey" && other is BoxCollider2D)
-		if(other == _playerCollider)
+		if(other == _playerCollider && _playerCollider.attachedRigidbody.velocity.y > 0)
         {
             var colliderItems = other.GetComponents<CircleCollider2D>();
 
@@ -32,20 +34,24 @@ public class CollisionTrigger : MonoBehaviour
             {
                 Physics2D.IgnoreCollision(_platformCollider, collider, true);
             }
+
+			_collissionActive = false;
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
 		//if (other.gameObject.name == "Monkey" && other is BoxCollider2D)
-		if(other == _playerCollider)
+		if(other == _playerCollider && _playerCollider.attachedRigidbody.velocity.y > 0)
         {
             var colliderItems = other.GetComponents<CircleCollider2D>();
 
             foreach (var collider in colliderItems)
             {
-                Physics2D.IgnoreCollision(_platformCollider, collider, true);
+                Physics2D.IgnoreCollision(_platformCollider, collider, false);
             }
+
+			_collissionActive = true;
         }
     }
 }

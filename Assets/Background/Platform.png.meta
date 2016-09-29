@@ -1,12 +1,22 @@
 fileFormatVersion: 2
 guid: 0036c73eb37ee374fab6d8650e3bfcff
-timeCreated: 1474918748
+timeCreated: 1475169627
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Platform_0
     21300002: Platform_1
     21300004: Platform_2
+    21300006: Platform_3
+    21300008: Platform_4
+    21300010: Platform_5
+    21300012: Platform_6
+    21300014: Platform_7
+    21300016: Platform_8
+    21300018: Platform_9
+    21300020: Platform_10
+    21300022: Platform_11
+    21300024: Platform_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,8 +69,8 @@ TextureImporter:
       name: Platform_0
       rect:
         serializedVersion: 2
-        x: 270
-        y: 452
+        x: 276
+        y: 706
         width: 368
         height: 182
       alignment: 0
@@ -72,8 +82,8 @@ TextureImporter:
       name: Platform_1
       rect:
         serializedVersion: 2
-        x: 647
-        y: 452
+        x: 653
+        y: 706
         width: 583
         height: 182
       alignment: 0
@@ -85,10 +95,140 @@ TextureImporter:
       name: Platform_2
       rect:
         serializedVersion: 2
-        x: 1238
-        y: 452
+        x: 1244
+        y: 706
         width: 357
         height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_3
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 641
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_4
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 415
+        width: 368
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_5
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 415
+        width: 583
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_6
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 415
+        width: 357
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_7
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 224
+        width: 368
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_8
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 224
+        width: 583
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_9
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 224
+        width: 356
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_10
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 30
+        width: 368
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_11
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 30
+        width: 583
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Platform_12
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 30
+        width: 356
+        height: 187
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

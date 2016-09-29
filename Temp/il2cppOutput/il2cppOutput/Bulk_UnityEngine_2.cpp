@@ -185,6 +185,8 @@ struct TypeInferenceRuleAttribute_t1657757719;
 #include "class-internals.h"
 #include "codegen/il2cpp-codegen.h"
 #include "mscorlib_System_Array1146569071.h"
+#include "UnityEngine_UnityEngine_Rigidbody3346577219.h"
+#include "UnityEngine_UnityEngine_Rigidbody3346577219MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Rigidbody2D1743771669.h"
 #include "UnityEngine_UnityEngine_Rigidbody2D1743771669MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Vector24282066565.h"

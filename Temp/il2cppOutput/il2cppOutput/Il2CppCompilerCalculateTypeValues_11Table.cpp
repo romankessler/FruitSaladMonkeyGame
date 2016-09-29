@@ -103,12 +103,12 @@
 #include "UnityEngine_UnityEngine_Cursor2745727898.h"
 #include "UnityEngine_UnityEngine_SocialPlatforms_GameCenter3570684786.h"
 #include "UnityEngine_UnityEngine_SocialPlatforms_GameCenter1820874799.h"
+#include "UnityEngine_UnityEngine_QualitySettings719345784.h"
 #include "UnityEngine_UnityEngine_Renderer3076687687.h"
 #include "UnityEngine_UnityEngine_Screen3187157168.h"
 #include "UnityEngine_UnityEngine_RectOffset3056157787.h"
 #include "UnityEngine_UnityEngine_GUIElement3775428101.h"
 #include "UnityEngine_UnityEngine_GUILayer2983897946.h"
-#include "UnityEngine_UnityEngine_Texture2526458961.h"
 
 
 
@@ -809,17 +809,17 @@ extern const int32_t g_FieldOffsetTable1193[2] =
 	GcLeaderboard_t1820874799::get_offset_of_m_InternalLeaderboard_0(),
 	GcLeaderboard_t1820874799::get_offset_of_m_GenericLeaderboard_1(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1194 = { sizeof (Renderer_t3076687687), -1, 0, 0 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1195 = { sizeof (Screen_t3187157168), -1, 0, 0 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1196 = { sizeof (RectOffset_t3056157787), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1196[2] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1194 = { sizeof (QualitySettings_t719345784), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1195 = { sizeof (Renderer_t3076687687), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1196 = { sizeof (Screen_t3187157168), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1197 = { sizeof (RectOffset_t3056157787), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1197[2] = 
 {
 	RectOffset_t3056157787::get_offset_of_m_Ptr_0(),
 	RectOffset_t3056157787::get_offset_of_m_SourceStyle_1(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1197 = { sizeof (GUIElement_t3775428101), -1, 0, 0 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1198 = { sizeof (GUILayer_t2983897946), -1, 0, 0 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1199 = { sizeof (Texture_t2526458961), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1198 = { sizeof (GUIElement_t3775428101), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1199 = { sizeof (GUILayer_t2983897946), -1, 0, 0 };
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif

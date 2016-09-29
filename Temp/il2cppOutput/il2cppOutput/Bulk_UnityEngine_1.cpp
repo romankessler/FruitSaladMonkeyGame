@@ -495,6 +495,8 @@ struct ResourceRequest_t3731857623;
 #include "UnityEngine_UnityEngine_PlayerPrefsException3680716996.h"
 #include "UnityEngine_UnityEngine_PropertyAttribute3531521085.h"
 #include "UnityEngine_UnityEngine_PropertyAttribute3531521085MethodDeclarations.h"
+#include "UnityEngine_UnityEngine_QualitySettings719345784.h"
+#include "UnityEngine_UnityEngine_QualitySettings719345784MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Quaternion1553702882MethodDeclarations.h"
 #include "mscorlib_System_Single4291918972MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_QueryTriggerInteraction577895768MethodDeclarations.h"
@@ -542,8 +544,6 @@ struct ResourceRequest_t3731857623;
 #include "UnityEngine_UnityEngine_AsyncOperation3699081103MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Resources2918352667MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Resources2918352667.h"
-#include "UnityEngine_UnityEngine_Rigidbody3346577219.h"
-#include "UnityEngine_UnityEngine_Rigidbody3346577219MethodDeclarations.h"
 
 // System.Int32 UnityEngine.Mesh::SafeLength<System.Int32>(System.Collections.Generic.List`1<!!0>)
 extern "C"  int32_t Mesh_SafeLength_TisInt32_t1153838500_m3487658462_gshared (Mesh_t4241756145 * __this, List_1_t2522024052 * p0, const MethodInfo* method);
@@ -20788,6 +20788,15 @@ extern "C"  void PropertyAttribute__ctor_m1741701746 (PropertyAttribute_t3531521
 		Attribute__ctor_m2985353781(__this, /*hidden argument*/NULL);
 		return;
 	}
+}
+// System.Void UnityEngine.QualitySettings::set_vSyncCount(System.Int32)
+extern "C"  void QualitySettings_set_vSyncCount_m2698975449 (Il2CppObject * __this /* static, unused */, int32_t ___value0, const MethodInfo* method)
+{
+	typedef void (*QualitySettings_set_vSyncCount_m2698975449_ftn) (int32_t);
+	static QualitySettings_set_vSyncCount_m2698975449_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (QualitySettings_set_vSyncCount_m2698975449_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.QualitySettings::set_vSyncCount(System.Int32)");
+	_il2cpp_icall_func(___value0);
 }
 // System.Single UnityEngine.Quaternion::Dot(UnityEngine.Quaternion,UnityEngine.Quaternion)
 extern "C"  float Quaternion_Dot_m580284 (Il2CppObject * __this /* static, unused */, Quaternion_t1553702882  ___a0, Quaternion_t1553702882  ___b1, const MethodInfo* method)

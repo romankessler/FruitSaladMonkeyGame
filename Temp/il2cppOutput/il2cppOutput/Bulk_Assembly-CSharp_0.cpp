@@ -39,6 +39,8 @@ struct FootStepSoundController_t1946956337;
 struct PlayerController_t2866526589;
 // UnityEngine.AudioSource
 struct AudioSource_t1740077639;
+// FrameRateSettings
+struct FrameRateSettings_t1037963024;
 // HealthController
 struct HealthController_t2938061624;
 // UnityEngine.Animator
@@ -114,6 +116,10 @@ struct StartSound_t409099757;
 #include "AssemblyU2DCSharp_PlayerController2866526589MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_AudioSource1740077639MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Random3156561159MethodDeclarations.h"
+#include "AssemblyU2DCSharp_FrameRateSettings1037963024.h"
+#include "AssemblyU2DCSharp_FrameRateSettings1037963024MethodDeclarations.h"
+#include "UnityEngine_UnityEngine_Application2856536070MethodDeclarations.h"
+#include "UnityEngine_UnityEngine_QualitySettings719345784MethodDeclarations.h"
 #include "AssemblyU2DCSharp_HealthController2938061624.h"
 #include "AssemblyU2DCSharp_HealthController2938061624MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_SceneManagement_SceneManag2940962239MethodDeclarations.h"
@@ -734,6 +740,30 @@ extern "C"  void FootStepSoundController_Update_m1919371763 (FootStepSoundContro
 	}
 
 IL_0079:
+	{
+		return;
+	}
+}
+// System.Void FrameRateSettings::.ctor()
+extern "C"  void FrameRateSettings__ctor_m2783809627 (FrameRateSettings_t1037963024 * __this, const MethodInfo* method)
+{
+	{
+		MonoBehaviour__ctor_m2022291967(__this, /*hidden argument*/NULL);
+		return;
+	}
+}
+// System.Void FrameRateSettings::Start()
+extern "C"  void FrameRateSettings_Start_m1730947419 (FrameRateSettings_t1037963024 * __this, const MethodInfo* method)
+{
+	{
+		Application_set_targetFrameRate_m498658007(NULL /*static, unused*/, ((int32_t)60), /*hidden argument*/NULL);
+		QualitySettings_set_vSyncCount_m2698975449(NULL /*static, unused*/, 0, /*hidden argument*/NULL);
+		return;
+	}
+}
+// System.Void FrameRateSettings::Update()
+extern "C"  void FrameRateSettings_Update_m2125614610 (FrameRateSettings_t1037963024 * __this, const MethodInfo* method)
+{
 	{
 		return;
 	}

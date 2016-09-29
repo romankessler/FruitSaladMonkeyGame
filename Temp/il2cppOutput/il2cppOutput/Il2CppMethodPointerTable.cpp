@@ -7386,6 +7386,7 @@ extern "C" void AnimatorTransitionInfo_get_exit_m2568505102_AdjustorThunk ();
 extern "C" void Application_get_isPlaying_m987993960 ();
 extern "C" void Application_get_isEditor_m1279348309 ();
 extern "C" void Application_get_platform_m2918632856 ();
+extern "C" void Application_set_targetFrameRate_m498658007 ();
 extern "C" void Application_CallLogCallback_m419361836 ();
 extern "C" void LogCallback__ctor_m286543475 ();
 extern "C" void LogCallback_Invoke_m1886455446 ();
@@ -8701,6 +8702,7 @@ extern "C" void PlayerPrefs_GetFloat_m1210224051 ();
 extern "C" void PlayerPrefs_GetFloat_m4179026766 ();
 extern "C" void PlayerPrefsException__ctor_m3661687413 ();
 extern "C" void PropertyAttribute__ctor_m1741701746 ();
+extern "C" void QualitySettings_set_vSyncCount_m2698975449 ();
 extern "C" void Quaternion_Dot_m580284 ();
 extern "C" void Quaternion_Inverse_m3542515566 ();
 extern "C" void Quaternion_INTERNAL_CALL_Inverse_m4175627710 ();
@@ -10881,6 +10883,9 @@ extern "C" void FootStepSoundController_get__audioSource_m2378847084 ();
 extern "C" void FootStepSoundController_set__audioSource_m3850462399 ();
 extern "C" void FootStepSoundController_Start_m3941051738 ();
 extern "C" void FootStepSoundController_Update_m1919371763 ();
+extern "C" void FrameRateSettings__ctor_m2783809627 ();
+extern "C" void FrameRateSettings_Start_m1730947419 ();
+extern "C" void FrameRateSettings_Update_m2125614610 ();
 extern "C" void HealthController__ctor_m1958871651 ();
 extern "C" void HealthController_Start_m906009443 ();
 extern "C" void HealthController_GetMaxHealthPoints_m671190652 ();
@@ -10920,7 +10925,7 @@ extern "C" void RandomAnimationStartTime_Start_m333833709 ();
 extern "C" void RandomAnimationStartTime_Update_m1764762560 ();
 extern "C" void StartSound__ctor_m2814350670 ();
 extern "C" void StartSound_OnStateEnter_m3768970606 ();
-extern const Il2CppMethodPointer g_MethodPointers[10909] = 
+extern const Il2CppMethodPointer g_MethodPointers[10914] = 
 {
 	Locale_GetText_m2389348044,
 	Locale_GetText_m2218462520,
@@ -18297,6 +18302,7 @@ extern const Il2CppMethodPointer g_MethodPointers[10909] =
 	Application_get_isPlaying_m987993960,
 	Application_get_isEditor_m1279348309,
 	Application_get_platform_m2918632856,
+	Application_set_targetFrameRate_m498658007,
 	Application_CallLogCallback_m419361836,
 	LogCallback__ctor_m286543475,
 	LogCallback_Invoke_m1886455446,
@@ -19612,6 +19618,7 @@ extern const Il2CppMethodPointer g_MethodPointers[10909] =
 	PlayerPrefs_GetFloat_m4179026766,
 	PlayerPrefsException__ctor_m3661687413,
 	PropertyAttribute__ctor_m1741701746,
+	QualitySettings_set_vSyncCount_m2698975449,
 	Quaternion_Dot_m580284,
 	Quaternion_Inverse_m3542515566,
 	Quaternion_INTERNAL_CALL_Inverse_m4175627710,
@@ -21792,6 +21799,9 @@ extern const Il2CppMethodPointer g_MethodPointers[10909] =
 	FootStepSoundController_set__audioSource_m3850462399,
 	FootStepSoundController_Start_m3941051738,
 	FootStepSoundController_Update_m1919371763,
+	FrameRateSettings__ctor_m2783809627,
+	FrameRateSettings_Start_m1730947419,
+	FrameRateSettings_Update_m2125614610,
 	HealthController__ctor_m1958871651,
 	HealthController_Start_m906009443,
 	HealthController_GetMaxHealthPoints_m671190652,

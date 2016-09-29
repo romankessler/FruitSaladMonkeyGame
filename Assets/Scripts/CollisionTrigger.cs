@@ -26,7 +26,7 @@ public class CollisionTrigger : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 		//if (other.gameObject.name == "Monkey" && other is BoxCollider2D)
-		if(other == _playerCollider && _playerCollider.attachedRigidbody.velocity.y > 0)
+		if(other == _playerCollider && !(_playerCollider.attachedRigidbody.velocity.y < 0))
         {
             var colliderItems = other.GetComponents<CircleCollider2D>();
 
@@ -42,7 +42,7 @@ public class CollisionTrigger : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
 		//if (other.gameObject.name == "Monkey" && other is BoxCollider2D)
-		if(other == _playerCollider && _playerCollider.attachedRigidbody.velocity.y > 0)
+		if(other == _playerCollider && !(_playerCollider.attachedRigidbody.velocity.y < 0))
         {
             var colliderItems = other.GetComponents<CircleCollider2D>();
 

@@ -52,14 +52,21 @@ public class PlayerController : MonoBehaviour
     // Is called on fixed intervall (based on Fixed Timestamp from project settings) 
     void FixedUpdate()
     {
-        //var hor = Input.GetAxis(InputNames.AXIS_HORIZONTAL);
-        //Walk(hor);
+		// Walking with keyboard
+        var horKeyboard = Input.GetAxis(InputNames.AXIS_HORIZONTAL);
 
-        // Walking with joystick
+		if(horKeyboard != 0){
+			Walk(horKeyboard);
+		}
+
+        // Walking with Touchpad
         var horCrossPlat = CrossPlatformInputManager.GetAxis(InputNames.AXIS_HORIZONTAL);
-        Walk(horCrossPlat);
 
-        // Ground Detection
+		if(horCrossPlat != 0){
+			Walk(horCrossPlat);
+		}
+
+		// Ground Detection
         UpdateGroundDetection();
 
         // Jump
@@ -83,7 +90,11 @@ public class PlayerController : MonoBehaviour
     {
         var oldValue = IsGrounded;
         
-        IsGrounded = Physics2D.OverlapCircle(groundCheck.position, (float)0.05, _whatIsGround);
+		var overlap = Physics2D.OverlapCircle(groundCheck.position, (float)0.05, _whatIsGround);
+
+		IsGrounded = _rigidbody.velocity.y <= 0 && overlap;
+
+
         _animator.SetBool("IsGrounded", IsGrounded);
 
         if (!oldValue && IsGrounded)

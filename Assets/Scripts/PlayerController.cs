@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         var oldValue = IsGrounded;
         
-		var overlap = Physics2D.OverlapCircle(groundCheck.position, (float)0.05, _whatIsGround);
+		var overlap = Physics2D.OverlapCircle(groundCheck.position, (float)0.1, _whatIsGround);
 
 		IsGrounded = _rigidbody.velocity.y <= 0 && overlap;
 

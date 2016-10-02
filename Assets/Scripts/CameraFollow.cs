@@ -41,21 +41,21 @@ public class CameraFollow : MonoBehaviour
 		_camera = _cameraAreaObject.GetComponentInChildren<Camera> ();
 
 		var cameraHeight = 2f * _camera.orthographicSize;
-		Debug.Log ("cameraHeight="+cameraHeight);
+//		Debug.Log ("cameraHeight="+cameraHeight);
 		var cameraWidth = cameraHeight * _camera.aspect;
-		Debug.Log ("cameraWidth="+cameraWidth);
+//		Debug.Log ("cameraWidth="+cameraWidth);
 
 		var areaXPos = _cameraAreaObject.transform.position.x;
 		var areaYPos = _cameraAreaObject.transform.position.y;
 
-		Debug.Log ("areaXPos="+areaXPos);
-		Debug.Log ("areaYPos="+areaYPos);
+//		Debug.Log ("areaXPos="+areaXPos);
+//		Debug.Log ("areaYPos="+areaYPos);
 
 		var areaWidth = _cameraArea.size.x;
 		var areaHeight = _cameraArea.size.y;
 
-		Debug.Log ("areaWidth="+areaWidth);
-		Debug.Log ("areaHeight="+areaHeight);
+//		Debug.Log ("areaWidth="+areaWidth);
+//		Debug.Log ("areaHeight="+areaHeight);
 
 		_xMin = areaXPos - areaWidth/2 + cameraWidth/2;// - _cameraAerea.offset.x;
 		_xMax = _xMin + areaWidth - cameraWidth;
@@ -63,10 +63,10 @@ public class CameraFollow : MonoBehaviour
 		_yMin = areaYPos - areaHeight/2 + cameraHeight/2;//; - _cameraAerea.offset.y;
 		_yMax = _yMin + areaHeight - cameraHeight;
 
-		Debug.Log ("xMin=" + _xMin);
-		Debug.Log ("xMax=" + _xMax);
-		Debug.Log ("yMin=" + _yMin);
-		Debug.Log ("yMax=" + _yMax);
+//		Debug.Log ("xMin=" + _xMin);
+//		Debug.Log ("xMax=" + _xMax);
+//		Debug.Log ("yMin=" + _yMin);
+//		Debug.Log ("yMax=" + _yMax);
 	}
 	
 
@@ -86,7 +86,7 @@ public class CameraFollow : MonoBehaviour
 
 	private float GetYTargetPosition (float playerVelocity)
 	{
-		Debug.Log ("Player Y velocity =" + playerVelocity);
+//		Debug.Log ("Player Y velocity =" + playerVelocity);
 
 		var cameraVelocity = playerVelocity;
 
@@ -96,7 +96,7 @@ public class CameraFollow : MonoBehaviour
 			cameraVelocity = _lastYVelocity - (_lastYVelocity / 15);
 		} 
 
-		Debug.Log ("Camera Y velocity =" + cameraVelocity);
+//		Debug.Log ("Camera Y velocity =" + cameraVelocity);
 
 		// ITS TO STOP CAMERA SMOOTHING
 		if(cameraVelocity <= 0.01 && cameraVelocity >= -0.01){
@@ -114,7 +114,7 @@ public class CameraFollow : MonoBehaviour
 
 	private float GetXTargetPosition (float playerVelocity)
 	{
-		Debug.Log ("Player X velocity =" + playerVelocity);
+//		Debug.Log ("Player X velocity =" + playerVelocity);
 
 		var cameraVelocity = playerVelocity;
 
@@ -123,7 +123,7 @@ public class CameraFollow : MonoBehaviour
 			cameraVelocity = _lastXVelocity - (_lastXVelocity == 0 ? playerVelocity / 15 : _lastXVelocity / 15);
 		//} 
 
-		Debug.Log ("Camera X velocity =" + cameraVelocity);
+//		Debug.Log ("Camera X velocity =" + cameraVelocity);
 
 		// ITS TO STOP CAMERA SMOOTHING
 		if(cameraVelocity <= 0.01 && cameraVelocity >= -0.01){

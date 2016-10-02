@@ -14,17 +14,22 @@ public class CollisionDestroy : MonoBehaviour {
 	{
 		if (other.CompareTag(TagNames.PLAYER) && _triggerArea.IsTouching(other))
 		{
-			AudioSource.PlayClipAtPoint(_triggerSoundEffect, other.transform.position);
-			Destroy(gameObject);
+			other.attachedRigidbody.AddForce (new Vector2 (0, 100));
+			Invoke("DestroyEnemy", 0.2f);
 		}
+	}
+
+	private void DestroyEnemy(){
+		AudioSource.PlayClipAtPoint(_triggerSoundEffect, transform.position);
+		Destroy(gameObject);
 	}
 
 	void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.CompareTag(TagNames.PLAYER) && _triggerArea.IsTouching(other))
 		{
-			AudioSource.PlayClipAtPoint(_triggerSoundEffect, other.transform.position);
-			Destroy(gameObject);
+			other.attachedRigidbody.AddForce (new Vector2 (0, 100));
+			Invoke("DestroyEnemy", 0.2f);
 		}
 	}
 }

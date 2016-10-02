@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CollisionDestroy.cs" />
      <Compile Include="Assets\Scripts\BackgroundParallaxController.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CollisionDamage.cs" />

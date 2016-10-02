@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f0f45ed7e3667c14f8b83e1b30923830
-timeCreated: 1473852081
+timeCreated: 1475341046
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -173,12 +173,12 @@ TextureImporter:
       name: armymonkeyv1_8
       rect:
         serializedVersion: 2
-        x: 135
+        x: 120
         y: 129
-        width: 77
-        height: 77
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 97
+        height: 100
+      alignment: 9
+      pivot: {x: 0.55517703, y: 0.3853099}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -186,12 +186,12 @@ TextureImporter:
       name: armymonkeyv1_9
       rect:
         serializedVersion: 2
-        x: 258
+        x: 253
         y: 99
-        width: 77
-        height: 77
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 99
+        height: 100
+      alignment: 9
+      pivot: {x: 0.4382139, y: 0.37766373}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

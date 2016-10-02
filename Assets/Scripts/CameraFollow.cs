@@ -4,8 +4,6 @@ using System.Collections;
 [RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour
 {
-
-
 	private float _xMin;
 
 	private float _xMax;

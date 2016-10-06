@@ -55,12 +55,12 @@ public class PlayerController : MonoBehaviour
 		var horKeyboard = Input.GetAxis (InputNames.AXIS_HORIZONTAL);
 
 		if (horKeyboard != 0) {
-			Debug.Log ("Walk from keaboard=" + horKeyboard);
+			//Debug.Log ("Walk from keaboard=" + horKeyboard);
 			Walk (horKeyboard);
 		} else {
 			// Walking with Touchpad
 			var horCrossPlat = CrossPlatformInputManager.GetAxis (InputNames.AXIS_HORIZONTAL);
-			Debug.Log ("Walk from touchpad" + horCrossPlat);
+			//Debug.Log ("Walk from touchpad" + horCrossPlat);
 			Walk (horCrossPlat);
 		}
 
@@ -116,8 +116,10 @@ public class PlayerController : MonoBehaviour
 	private void UpdateWalking (float hor)
 	{
 		WalkingSpeed = Mathf.Abs (hor);
+		//Debug.Log (WalkingSpeed);
 		_animator.SetFloat ("WalkingSpeed", WalkingSpeed);
 		_rigidbody.velocity = new Vector2 (hor * _maxSpeed, _rigidbody.velocity.y);
+		//Debug.Log (transform.position.x);
 	}
 
 	public void Flip ()

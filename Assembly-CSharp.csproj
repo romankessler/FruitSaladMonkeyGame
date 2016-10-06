@@ -3,9 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
     <ProjectGuid>{50343139-1AC8-BE15-9B66-42ED16DFC91A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -34,49 +33,52 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
+      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\Managed\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CollisionDestroy.cs" />
-     <Compile Include="Assets\Scripts\BackgroundParallaxController.cs" />
-     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\Scripts\CollisionDamage.cs" />
-     <Compile Include="Assets\Scripts\CollisionTrigger.cs" />
-     <Compile Include="Assets\Scripts\Constants\InputNames.cs" />
-     <Compile Include="Assets\Scripts\Constants\SceneNames.cs" />
-     <Compile Include="Assets\Scripts\Constants\TagNames.cs" />
-     <Compile Include="Assets\Scripts\FootStepSoundController.cs" />
-     <Compile Include="Assets\Scripts\FrameRateSettings.cs" />
-     <Compile Include="Assets\Scripts\HealthController.cs" />
-     <Compile Include="Assets\Scripts\HeartContainer.cs" />
-     <Compile Include="Assets\Scripts\HeartSystem.cs" />
-     <Compile Include="Assets\Scripts\ItemHeart.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\RandomAnimationStartTime.cs" />
-     <Compile Include="Assets\StateMachineBehaviors\StartSound.cs" />
-     <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
-     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
+    <Compile Include="Assets\CollisionDestroy.cs" />
+    <Compile Include="Assets\PatrolWalkingController.cs" />
+    <Compile Include="Assets\Scripts\BackgroundParallaxController.cs" />
+    <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\CollisionDamage.cs" />
+    <Compile Include="Assets\Scripts\CollisionTrigger.cs" />
+    <Compile Include="Assets\Scripts\Constants\InputNames.cs" />
+    <Compile Include="Assets\Scripts\Constants\SceneNames.cs" />
+    <Compile Include="Assets\Scripts\Constants\TagNames.cs" />
+    <Compile Include="Assets\Scripts\FootStepSoundController.cs" />
+    <Compile Include="Assets\Scripts\FrameRateSettings.cs" />
+    <Compile Include="Assets\Scripts\HealthController.cs" />
+    <Compile Include="Assets\Scripts\HeartContainer.cs" />
+    <Compile Include="Assets\Scripts\HeartSystem.cs" />
+    <Compile Include="Assets\Scripts\ItemHeart.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\RandomAnimationStartTime.cs" />
+    <Compile Include="Assets\StateMachineBehaviors\StartSound.cs" />
+    <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityAnalytics\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{3EB91D9B-AE83-6EA1-2250-66E51E750C0C}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{3EB91D9B-AE83-6EA1-2250-66E51E750C0C}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -86,5 +88,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
 </Project>

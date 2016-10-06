@@ -1,4 +1,4 @@
-//Generated on : 02.10.2016 20:28:11
+//Generated on : 06.10.2016 21:10:02
 void RegisterAllStrippedInternalCalls()
 {
 	//Start Registrations for type : UnityEngine.AnimationCurve
@@ -510,6 +510,10 @@ void RegisterAllStrippedInternalCalls()
 		//System.Boolean UnityEngine.Collider2D::IsTouching(UnityEngine.Collider2D)
 		void Register_UnityEngine_Collider2D_IsTouching();
 		Register_UnityEngine_Collider2D_IsTouching();
+
+		//System.Void UnityEngine.Collider2D::INTERNAL_get_offset(UnityEngine.Vector2&)
+		void Register_UnityEngine_Collider2D_INTERNAL_get_offset();
+		Register_UnityEngine_Collider2D_INTERNAL_get_offset();
 
 		//UnityEngine.Rigidbody2D UnityEngine.Collider2D::get_attachedRigidbody()
 		void Register_UnityEngine_Collider2D_get_attachedRigidbody();

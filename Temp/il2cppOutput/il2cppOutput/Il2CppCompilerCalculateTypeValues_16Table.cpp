@@ -98,11 +98,11 @@
 #include "AssemblyU2DCSharpU2Dfirstpass_UnityStandardAssets_4138570349.h"
 #include "AssemblyU2DCSharp_U3CModuleU3E86524790.h"
 #include "AssemblyU2DCSharp_CollisionDestroy3512342664.h"
+#include "AssemblyU2DCSharp_PatrolWalkingController4146239721.h"
 #include "AssemblyU2DCSharp_BackgroundParallaxController3753972353.h"
 #include "AssemblyU2DCSharp_CameraFollow3148844886.h"
 #include "AssemblyU2DCSharp_CollisionDamage802146593.h"
 #include "AssemblyU2DCSharp_CollisionTrigger895077958.h"
-#include "AssemblyU2DCSharp_Assets_Scripts_Constants_InputNa3736830776.h"
 
 
 
@@ -782,8 +782,19 @@ extern const int32_t g_FieldOffsetTable1694[3] =
 	CollisionDestroy_t3512342664::get_offset_of__triggerSoundEffect_3(),
 	CollisionDestroy_t3512342664::get_offset_of__animator_4(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1695 = { sizeof (BackgroundParallaxController_t3753972353), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1695[5] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1695 = { sizeof (PatrolWalkingController_t4146239721), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1695[7] = 
+{
+	PatrolWalkingController_t4146239721::get_offset_of__rigidbody_2(),
+	PatrolWalkingController_t4146239721::get_offset_of__animator_3(),
+	PatrolWalkingController_t4146239721::get_offset_of__walkingRange_4(),
+	PatrolWalkingController_t4146239721::get_offset_of__maxWalkingSpeed_5(),
+	PatrolWalkingController_t4146239721::get_offset_of__walkingSpeed_6(),
+	PatrolWalkingController_t4146239721::get_offset_of__minPosition_7(),
+	PatrolWalkingController_t4146239721::get_offset_of__maxPosition_8(),
+};
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1696 = { sizeof (BackgroundParallaxController_t3753972353), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1696[5] = 
 {
 	BackgroundParallaxController_t3753972353::get_offset_of__lastPosition_2(),
 	BackgroundParallaxController_t3753972353::get_offset_of_BackroundItems_3(),
@@ -791,8 +802,8 @@ extern const int32_t g_FieldOffsetTable1695[5] =
 	BackgroundParallaxController_t3753972353::get_offset_of_ParallaxScale_5(),
 	BackgroundParallaxController_t3753972353::get_offset_of_Smoothing_6(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1696 = { sizeof (CameraFollow_t3148844886), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1696[12] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1697 = { sizeof (CameraFollow_t3148844886), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1697[12] = 
 {
 	CameraFollow_t3148844886::get_offset_of__xMin_2(),
 	CameraFollow_t3148844886::get_offset_of__xMax_3(),
@@ -807,24 +818,18 @@ extern const int32_t g_FieldOffsetTable1696[12] =
 	CameraFollow_t3148844886::get_offset_of__cameraAreaObject_12(),
 	CameraFollow_t3148844886::get_offset_of__camera_13(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1697 = { sizeof (CollisionDamage_t802146593), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1697[1] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1698 = { sizeof (CollisionDamage_t802146593), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1698[1] = 
 {
 	CollisionDamage_t802146593::get_offset_of__damage_2(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1698 = { sizeof (CollisionTrigger_t895077958), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1698[4] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1699 = { sizeof (CollisionTrigger_t895077958), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1699[4] = 
 {
 	CollisionTrigger_t895077958::get_offset_of__platformCollider_2(),
 	CollisionTrigger_t895077958::get_offset_of__platormTrigger_3(),
 	CollisionTrigger_t895077958::get_offset_of__playerCollider_4(),
 	CollisionTrigger_t895077958::get_offset_of__collissionActive_5(),
-};
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1699 = { sizeof (InputNames_t3736830776), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1699[2] = 
-{
-	0,
-	0,
 };
 #ifdef __clang__
 #pragma clang diagnostic pop

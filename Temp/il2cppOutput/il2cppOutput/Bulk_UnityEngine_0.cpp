@@ -4652,6 +4652,26 @@ extern "C"  Rigidbody_t3346577219 * Collider_get_attachedRigidbody_m2821754842 (
 	_il2cpp_icall_func = (Collider_get_attachedRigidbody_m2821754842_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Collider::get_attachedRigidbody()");
 	return _il2cpp_icall_func(__this);
 }
+// UnityEngine.Vector2 UnityEngine.Collider2D::get_offset()
+extern "C"  Vector2_t4282066565  Collider2D_get_offset_m3854309972 (Collider2D_t1552025098 * __this, const MethodInfo* method)
+{
+	Vector2_t4282066565  V_0;
+	memset(&V_0, 0, sizeof(V_0));
+	{
+		Collider2D_INTERNAL_get_offset_m2687145813(__this, (&V_0), /*hidden argument*/NULL);
+		Vector2_t4282066565  L_0 = V_0;
+		return L_0;
+	}
+}
+// System.Void UnityEngine.Collider2D::INTERNAL_get_offset(UnityEngine.Vector2&)
+extern "C"  void Collider2D_INTERNAL_get_offset_m2687145813 (Collider2D_t1552025098 * __this, Vector2_t4282066565 * ___value0, const MethodInfo* method)
+{
+	typedef void (*Collider2D_INTERNAL_get_offset_m2687145813_ftn) (Collider2D_t1552025098 *, Vector2_t4282066565 *);
+	static Collider2D_INTERNAL_get_offset_m2687145813_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Collider2D_INTERNAL_get_offset_m2687145813_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Collider2D::INTERNAL_get_offset(UnityEngine.Vector2&)");
+	_il2cpp_icall_func(__this, ___value0);
+}
 // UnityEngine.Rigidbody2D UnityEngine.Collider2D::get_attachedRigidbody()
 extern "C"  Rigidbody2D_t1743771669 * Collider2D_get_attachedRigidbody_m2908627162 (Collider2D_t1552025098 * __this, const MethodInfo* method)
 {

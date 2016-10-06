@@ -16,6 +16,7 @@
 
 #include "class-internals.h"
 #include "codegen/il2cpp-codegen.h"
+#include "AssemblyU2DCSharp_Assets_Scripts_Constants_InputNa3736830776.h"
 #include "AssemblyU2DCSharp_Assets_Scripts_Constants_SceneNam135785398.h"
 #include "AssemblyU2DCSharp_Assets_Scripts_Constants_TagName1964194152.h"
 #include "AssemblyU2DCSharp_FootStepSoundController1946956337.h"
@@ -35,25 +36,31 @@
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1700 = { sizeof (SceneNames_t135785398), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1700[1] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1700 = { sizeof (InputNames_t3736830776), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1700[2] = 
 {
 	0,
+	0,
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1701 = { sizeof (TagNames_t1964194152), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1701 = { sizeof (SceneNames_t135785398), -1, 0, 0 };
 extern const int32_t g_FieldOffsetTable1701[1] = 
 {
 	0,
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1702 = { sizeof (FootStepSoundController_t1946956337), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1702[2] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1702 = { sizeof (TagNames_t1964194152), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1702[1] = 
+{
+	0,
+};
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1703 = { sizeof (FootStepSoundController_t1946956337), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1703[2] = 
 {
 	FootStepSoundController_t1946956337::get_offset_of_U3C_playerControllerU3Ek__BackingField_2(),
 	FootStepSoundController_t1946956337::get_offset_of_U3C_audioSourceU3Ek__BackingField_3(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1703 = { sizeof (FrameRateSettings_t1037963024), -1, 0, 0 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1704 = { sizeof (HealthController_t2938061624), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1704[9] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1704 = { sizeof (FrameRateSettings_t1037963024), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1705 = { sizeof (HealthController_t2938061624), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1705[9] = 
 {
 	HealthController_t2938061624::get_offset_of__animator_2(),
 	HealthController_t2938061624::get_offset_of__health_3(),
@@ -65,28 +72,28 @@ extern const int32_t g_FieldOffsetTable1704[9] =
 	HealthController_t2938061624::get_offset_of_StartLifePoints_9(),
 	HealthController_t2938061624::get_offset_of_MaxHeartAmount_10(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1705 = { sizeof (HeartContainer_t3899930363), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1705[2] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1706 = { sizeof (HeartContainer_t3899930363), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1706[2] = 
 {
 	HeartContainer_t3899930363::get_offset_of__heartAmount_2(),
 	HeartContainer_t3899930363::get_offset_of_SoundEffect_3(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1706 = { sizeof (HeartSystem_t1045703157), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1706[4] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1707 = { sizeof (HeartSystem_t1045703157), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1707[4] = 
 {
 	HeartSystem_t1045703157::get_offset_of__healthPerHeart_2(),
 	HeartSystem_t1045703157::get_offset_of__heartImages_3(),
 	HeartSystem_t1045703157::get_offset_of__heartSprites_4(),
 	HeartSystem_t1045703157::get_offset_of__maxHeartAmount_5(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1707 = { sizeof (ItemHeart_t4136081619), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1707[2] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1708 = { sizeof (ItemHeart_t4136081619), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1708[2] = 
 {
 	ItemHeart_t4136081619::get_offset_of__healingHeartAmount_2(),
 	ItemHeart_t4136081619::get_offset_of_SoundEffect_3(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1708 = { sizeof (PlayerController_t2866526589), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1708[12] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1709 = { sizeof (PlayerController_t2866526589), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1709[12] = 
 {
 	PlayerController_t2866526589::get_offset_of__animator_2(),
 	PlayerController_t2866526589::get_offset_of_IsGrounded_3(),
@@ -101,9 +108,9 @@ extern const int32_t g_FieldOffsetTable1708[12] =
 	PlayerController_t2866526589::get_offset_of_LandedSoundEffect_12(),
 	PlayerController_t2866526589::get_offset_of_U3CWalkingSpeedU3Ek__BackingField_13(),
 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1709 = { sizeof (RandomAnimationStartTime_t939883886), -1, 0, 0 };
-extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1710 = { sizeof (StartSound_t409099757), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1710[1] = 
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1710 = { sizeof (RandomAnimationStartTime_t939883886), -1, 0, 0 };
+extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1711 = { sizeof (StartSound_t409099757), -1, 0, 0 };
+extern const int32_t g_FieldOffsetTable1711[1] = 
 {
 	StartSound_t409099757::get_offset_of__audioClip_2(),
 };

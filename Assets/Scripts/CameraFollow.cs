@@ -57,10 +57,10 @@ public class CameraFollow : MonoBehaviour
 //		Debug.Log ("areaWidth="+areaWidth);
 //		Debug.Log ("areaHeight="+areaHeight);
 
-		_xMin = areaXPos - areaWidth/2 + cameraWidth/2;// - _cameraAerea.offset.x;
+		_xMin = areaXPos - areaWidth / 2 + cameraWidth/2 + _cameraArea.offset.x;
 		_xMax = _xMin + areaWidth - cameraWidth;
 
-		_yMin = areaYPos - areaHeight/2 + cameraHeight/2;//; - _cameraAerea.offset.y;
+		_yMin = areaYPos - areaHeight/2 + cameraHeight/2 + _cameraArea.offset.y;
 		_yMax = _yMin + areaHeight - cameraHeight;
 
 //		Debug.Log ("xMin=" + _xMin);

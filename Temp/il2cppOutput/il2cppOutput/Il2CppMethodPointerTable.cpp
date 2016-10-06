@@ -7577,6 +7577,8 @@ extern "C" void CanvasRenderer_set_cull_m3433952120 ();
 extern "C" void CanvasRenderer_get_absoluteDepth_m1613567475 ();
 extern "C" void CanvasRenderer_get_hasMoved_m1392755130 ();
 extern "C" void Collider_get_attachedRigidbody_m2821754842 ();
+extern "C" void Collider2D_get_offset_m3854309972 ();
+extern "C" void Collider2D_INTERNAL_get_offset_m2687145813 ();
 extern "C" void Collider2D_get_attachedRigidbody_m2908627162 ();
 extern "C" void Collider2D_IsTouching_m1263557075 ();
 extern "C" void Collision__ctor_m183727591 ();
@@ -10925,6 +10927,10 @@ extern "C" void HeartSystem_UpdateMaxHeartAmount_m3552913378 ();
 extern "C" void HeartSystem_UpdateHearts_m3956368725 ();
 extern "C" void ItemHeart__ctor_m3794188792 ();
 extern "C" void ItemHeart_OnTriggerEnter2D_m606045312 ();
+extern "C" void PatrolWalkingController__ctor_m2536422562 ();
+extern "C" void PatrolWalkingController_Start_m1483560354 ();
+extern "C" void PatrolWalkingController_Update_m3046550187 ();
+extern "C" void PatrolWalkingController_Walk_m1044799392 ();
 extern "C" void PlayerController__ctor_m2658519486 ();
 extern "C" void PlayerController_Start_m1605657278 ();
 extern "C" void PlayerController_Update_m2536587535 ();
@@ -10941,7 +10947,7 @@ extern "C" void RandomAnimationStartTime_Start_m333833709 ();
 extern "C" void RandomAnimationStartTime_Update_m1764762560 ();
 extern "C" void StartSound__ctor_m2814350670 ();
 extern "C" void StartSound_OnStateEnter_m3768970606 ();
-extern const Il2CppMethodPointer g_MethodPointers[10930] = 
+extern const Il2CppMethodPointer g_MethodPointers[10936] = 
 {
 	Locale_GetText_m2389348044,
 	Locale_GetText_m2218462520,
@@ -18509,6 +18515,8 @@ extern const Il2CppMethodPointer g_MethodPointers[10930] =
 	CanvasRenderer_get_absoluteDepth_m1613567475,
 	CanvasRenderer_get_hasMoved_m1392755130,
 	Collider_get_attachedRigidbody_m2821754842,
+	Collider2D_get_offset_m3854309972,
+	Collider2D_INTERNAL_get_offset_m2687145813,
 	Collider2D_get_attachedRigidbody_m2908627162,
 	Collider2D_IsTouching_m1263557075,
 	Collision__ctor_m183727591,
@@ -21857,6 +21865,10 @@ extern const Il2CppMethodPointer g_MethodPointers[10930] =
 	HeartSystem_UpdateHearts_m3956368725,
 	ItemHeart__ctor_m3794188792,
 	ItemHeart_OnTriggerEnter2D_m606045312,
+	PatrolWalkingController__ctor_m2536422562,
+	PatrolWalkingController_Start_m1483560354,
+	PatrolWalkingController_Update_m3046550187,
+	PatrolWalkingController_Walk_m1044799392,
 	PlayerController__ctor_m2658519486,
 	PlayerController_Start_m1605657278,
 	PlayerController_Update_m2536587535,

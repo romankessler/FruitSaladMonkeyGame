@@ -65,6 +65,8 @@ struct IEnumerable_1_t3176762032;
 struct IEnumerable_1_t3839788222;
 // ItemHeart
 struct ItemHeart_t4136081619;
+// PatrolWalkingController
+struct PatrolWalkingController_t4146239721;
 // RandomAnimationStartTime
 struct RandomAnimationStartTime_t939883886;
 // StartSound
@@ -100,6 +102,7 @@ struct StartSound_t409099757;
 #include "UnityEngine_UnityEngine_GameObject3674682005MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Camera2727095145MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_BoxCollider2D2212926951MethodDeclarations.h"
+#include "UnityEngine_UnityEngine_Collider2D1552025098MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Vector24282066565.h"
 #include "UnityEngine_UnityEngine_GameObject3674682005.h"
 #include "UnityEngine_UnityEngine_Rigidbody2D1743771669.h"
@@ -117,7 +120,6 @@ struct StartSound_t409099757;
 #include "AssemblyU2DCSharp_CollisionDestroy3512342664MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Animator2776330603.h"
 #include "UnityEngine_UnityEngine_Component3501516275.h"
-#include "UnityEngine_UnityEngine_Collider2D1552025098MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Animator2776330603MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Vector24282066565MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_AudioSource1740077639MethodDeclarations.h"
@@ -159,6 +161,8 @@ struct StartSound_t409099757;
 #include "UnityEngine_UI_UnityEngine_UI_Image538875265MethodDeclarations.h"
 #include "AssemblyU2DCSharp_ItemHeart4136081619.h"
 #include "AssemblyU2DCSharp_ItemHeart4136081619MethodDeclarations.h"
+#include "AssemblyU2DCSharp_PatrolWalkingController4146239721.h"
+#include "AssemblyU2DCSharp_PatrolWalkingController4146239721MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_Input4200062272MethodDeclarations.h"
 #include "AssemblyU2DCSharpU2Dfirstpass_UnityStandardAssets_1974578728MethodDeclarations.h"
 #include "UnityEngine_UnityEngine_LayerMask3236759763MethodDeclarations.h"
@@ -393,6 +397,10 @@ extern "C"  void CameraFollow_Start_m1494473989 (CameraFollow_t3148844886 * __th
 	memset(&V_8, 0, sizeof(V_8));
 	Vector2_t4282066565  V_9;
 	memset(&V_9, 0, sizeof(V_9));
+	Vector2_t4282066565  V_10;
+	memset(&V_10, 0, sizeof(V_10));
+	Vector2_t4282066565  V_11;
+	memset(&V_11, 0, sizeof(V_11));
 	{
 		GameObject_t3674682005 * L_0 = __this->get__cameraTarget_8();
 		NullCheck(L_0);
@@ -452,19 +460,29 @@ extern "C"  void CameraFollow_Start_m1494473989 (CameraFollow_t3148844886 * __th
 		float L_28 = V_2;
 		float L_29 = V_4;
 		float L_30 = V_1;
-		__this->set__xMin_2(((float)((float)((float)((float)L_28-(float)((float)((float)L_29/(float)(2.0f)))))+(float)((float)((float)L_30/(float)(2.0f))))));
-		float L_31 = __this->get__xMin_2();
-		float L_32 = V_4;
-		float L_33 = V_1;
-		__this->set__xMax_3(((float)((float)((float)((float)L_31+(float)L_32))-(float)L_33)));
-		float L_34 = V_3;
-		float L_35 = V_5;
-		float L_36 = V_0;
-		__this->set__yMin_4(((float)((float)((float)((float)L_34-(float)((float)((float)L_35/(float)(2.0f)))))+(float)((float)((float)L_36/(float)(2.0f))))));
-		float L_37 = __this->get__yMin_4();
+		BoxCollider2D_t2212926951 * L_31 = __this->get__cameraArea_11();
+		NullCheck(L_31);
+		Vector2_t4282066565  L_32 = Collider2D_get_offset_m3854309972(L_31, /*hidden argument*/NULL);
+		V_10 = L_32;
+		float L_33 = (&V_10)->get_x_1();
+		__this->set__xMin_2(((float)((float)((float)((float)((float)((float)L_28-(float)((float)((float)L_29/(float)(2.0f)))))+(float)((float)((float)L_30/(float)(2.0f)))))+(float)L_33)));
+		float L_34 = __this->get__xMin_2();
+		float L_35 = V_4;
+		float L_36 = V_1;
+		__this->set__xMax_3(((float)((float)((float)((float)L_34+(float)L_35))-(float)L_36)));
+		float L_37 = V_3;
 		float L_38 = V_5;
 		float L_39 = V_0;
-		__this->set__yMax_5(((float)((float)((float)((float)L_37+(float)L_38))-(float)L_39)));
+		BoxCollider2D_t2212926951 * L_40 = __this->get__cameraArea_11();
+		NullCheck(L_40);
+		Vector2_t4282066565  L_41 = Collider2D_get_offset_m3854309972(L_40, /*hidden argument*/NULL);
+		V_11 = L_41;
+		float L_42 = (&V_11)->get_y_2();
+		__this->set__yMin_4(((float)((float)((float)((float)((float)((float)L_37-(float)((float)((float)L_38/(float)(2.0f)))))+(float)((float)((float)L_39/(float)(2.0f)))))+(float)L_42)));
+		float L_43 = __this->get__yMin_4();
+		float L_44 = V_5;
+		float L_45 = V_0;
+		__this->set__yMax_5(((float)((float)((float)((float)L_43+(float)L_44))-(float)L_45)));
 		return;
 	}
 }
@@ -2049,6 +2067,143 @@ IL_0047:
 		return;
 	}
 }
+// System.Void PatrolWalkingController::.ctor()
+extern "C"  void PatrolWalkingController__ctor_m2536422562 (PatrolWalkingController_t4146239721 * __this, const MethodInfo* method)
+{
+	{
+		__this->set__walkingRange_4((15.4f));
+		__this->set__maxWalkingSpeed_5((1.0f));
+		__this->set__walkingSpeed_6((0.4f));
+		MonoBehaviour__ctor_m2022291967(__this, /*hidden argument*/NULL);
+		return;
+	}
+}
+// System.Void PatrolWalkingController::Start()
+extern const MethodInfo* Component_GetComponent_TisRigidbody2D_t1743771669_m2201104241_MethodInfo_var;
+extern const MethodInfo* Component_GetComponent_TisAnimator_t2776330603_m4147395588_MethodInfo_var;
+extern const uint32_t PatrolWalkingController_Start_m1483560354_MetadataUsageId;
+extern "C"  void PatrolWalkingController_Start_m1483560354 (PatrolWalkingController_t4146239721 * __this, const MethodInfo* method)
+{
+	static bool s_Il2CppMethodIntialized;
+	if (!s_Il2CppMethodIntialized)
+	{
+		il2cpp_codegen_initialize_method (PatrolWalkingController_Start_m1483560354_MetadataUsageId);
+		s_Il2CppMethodIntialized = true;
+	}
+	{
+		Rigidbody2D_t1743771669 * L_0 = Component_GetComponent_TisRigidbody2D_t1743771669_m2201104241(__this, /*hidden argument*/Component_GetComponent_TisRigidbody2D_t1743771669_m2201104241_MethodInfo_var);
+		__this->set__rigidbody_2(L_0);
+		Animator_t2776330603 * L_1 = Component_GetComponent_TisAnimator_t2776330603_m4147395588(__this, /*hidden argument*/Component_GetComponent_TisAnimator_t2776330603_m4147395588_MethodInfo_var);
+		__this->set__animator_3(L_1);
+		Transform_t1659122786 * L_2 = Component_get_transform_m4257140443(__this, /*hidden argument*/NULL);
+		NullCheck(L_2);
+		Vector3_t4282066566  L_3 = Transform_get_position_m2211398607(L_2, /*hidden argument*/NULL);
+		__this->set__minPosition_7(L_3);
+		Vector3_t4282066566 * L_4 = __this->get_address_of__minPosition_7();
+		Vector3_t4282066566 * L_5 = __this->get_address_of__minPosition_7();
+		float L_6 = L_5->get_x_1();
+		float L_7 = __this->get__walkingRange_4();
+		L_4->set_x_1(((float)((float)L_6-(float)((float)((float)L_7/(float)(2.0f))))));
+		Transform_t1659122786 * L_8 = Component_get_transform_m4257140443(__this, /*hidden argument*/NULL);
+		NullCheck(L_8);
+		Vector3_t4282066566  L_9 = Transform_get_position_m2211398607(L_8, /*hidden argument*/NULL);
+		__this->set__maxPosition_8(L_9);
+		Vector3_t4282066566 * L_10 = __this->get_address_of__maxPosition_8();
+		Vector3_t4282066566 * L_11 = __this->get_address_of__minPosition_7();
+		float L_12 = L_11->get_x_1();
+		float L_13 = __this->get__walkingRange_4();
+		L_10->set_x_1(((float)((float)L_12+(float)L_13)));
+		return;
+	}
+}
+// System.Void PatrolWalkingController::Update()
+extern "C"  void PatrolWalkingController_Update_m3046550187 (PatrolWalkingController_t4146239721 * __this, const MethodInfo* method)
+{
+	Vector3_t4282066566  V_0;
+	memset(&V_0, 0, sizeof(V_0));
+	Vector3_t4282066566  V_1;
+	memset(&V_1, 0, sizeof(V_1));
+	{
+		Transform_t1659122786 * L_0 = Component_get_transform_m4257140443(__this, /*hidden argument*/NULL);
+		NullCheck(L_0);
+		Vector3_t4282066566  L_1 = Transform_get_position_m2211398607(L_0, /*hidden argument*/NULL);
+		V_0 = L_1;
+		float L_2 = (&V_0)->get_x_1();
+		Vector3_t4282066566 * L_3 = __this->get_address_of__maxPosition_8();
+		float L_4 = L_3->get_x_1();
+		if ((!(((float)L_2) >= ((float)L_4))))
+		{
+			goto IL_0033;
+		}
+	}
+	{
+		float L_5 = __this->get__walkingSpeed_6();
+		if ((((float)L_5) > ((float)(0.0f))))
+		{
+			goto IL_0066;
+		}
+	}
+
+IL_0033:
+	{
+		Transform_t1659122786 * L_6 = Component_get_transform_m4257140443(__this, /*hidden argument*/NULL);
+		NullCheck(L_6);
+		Vector3_t4282066566  L_7 = Transform_get_position_m2211398607(L_6, /*hidden argument*/NULL);
+		V_1 = L_7;
+		float L_8 = (&V_1)->get_x_1();
+		Vector3_t4282066566 * L_9 = __this->get_address_of__minPosition_7();
+		float L_10 = L_9->get_x_1();
+		if ((!(((float)L_8) <= ((float)L_10))))
+		{
+			goto IL_0078;
+		}
+	}
+	{
+		float L_11 = __this->get__walkingSpeed_6();
+		if ((!(((float)L_11) < ((float)(0.0f)))))
+		{
+			goto IL_0078;
+		}
+	}
+
+IL_0066:
+	{
+		float L_12 = __this->get__walkingSpeed_6();
+		__this->set__walkingSpeed_6(((float)((float)L_12*(float)(-1.0f))));
+	}
+
+IL_0078:
+	{
+		float L_13 = __this->get__walkingSpeed_6();
+		PatrolWalkingController_Walk_m1044799392(__this, L_13, /*hidden argument*/NULL);
+		return;
+	}
+}
+// System.Void PatrolWalkingController::Walk(System.Single)
+extern "C"  void PatrolWalkingController_Walk_m1044799392 (PatrolWalkingController_t4146239721 * __this, float ___speed0, const MethodInfo* method)
+{
+	float V_0 = 0.0f;
+	Vector2_t4282066565  V_1;
+	memset(&V_1, 0, sizeof(V_1));
+	{
+		float L_0 = ___speed0;
+		float L_1 = __this->get__maxWalkingSpeed_5();
+		V_0 = ((float)((float)L_0*(float)L_1));
+		Rigidbody2D_t1743771669 * L_2 = __this->get__rigidbody_2();
+		float L_3 = V_0;
+		Rigidbody2D_t1743771669 * L_4 = __this->get__rigidbody_2();
+		NullCheck(L_4);
+		Vector2_t4282066565  L_5 = Rigidbody2D_get_velocity_m416159605(L_4, /*hidden argument*/NULL);
+		V_1 = L_5;
+		float L_6 = (&V_1)->get_y_2();
+		Vector2_t4282066565  L_7;
+		memset(&L_7, 0, sizeof(L_7));
+		Vector2__ctor_m1517109030(&L_7, L_3, L_6, /*hidden argument*/NULL);
+		NullCheck(L_2);
+		Rigidbody2D_set_velocity_m100625302(L_2, L_7, /*hidden argument*/NULL);
+		return;
+	}
+}
 // System.Void PlayerController::.ctor()
 extern "C"  void PlayerController__ctor_m2658519486 (PlayerController_t2866526589 * __this, const MethodInfo* method)
 {
@@ -2134,13 +2289,8 @@ IL_0046:
 }
 // System.Void PlayerController::FixedUpdate()
 extern Il2CppClass* Input_t4200062272_il2cpp_TypeInfo_var;
-extern Il2CppClass* Single_t4291918972_il2cpp_TypeInfo_var;
-extern Il2CppClass* String_t_il2cpp_TypeInfo_var;
-extern Il2CppClass* Debug_t4195163081_il2cpp_TypeInfo_var;
 extern Il2CppClass* CrossPlatformInputManager_t1974578728_il2cpp_TypeInfo_var;
 extern Il2CppCodeGenString* _stringLiteral3381094468;
-extern Il2CppCodeGenString* _stringLiteral297483583;
-extern Il2CppCodeGenString* _stringLiteral2975664819;
 extern const uint32_t PlayerController_FixedUpdate_m270852281_MetadataUsageId;
 extern "C"  void PlayerController_FixedUpdate_m270852281 (PlayerController_t2866526589 * __this, const MethodInfo* method)
 {
@@ -2159,59 +2309,45 @@ extern "C"  void PlayerController_FixedUpdate_m270852281 (PlayerController_t2866
 		float L_1 = V_0;
 		if ((((float)L_1) == ((float)(0.0f))))
 		{
-			goto IL_0037;
+			goto IL_0022;
 		}
 	}
 	{
 		float L_2 = V_0;
-		float L_3 = L_2;
-		Il2CppObject * L_4 = Box(Single_t4291918972_il2cpp_TypeInfo_var, &L_3);
-		IL2CPP_RUNTIME_CLASS_INIT(String_t_il2cpp_TypeInfo_var);
-		String_t* L_5 = String_Concat_m389863537(NULL /*static, unused*/, _stringLiteral297483583, L_4, /*hidden argument*/NULL);
-		IL2CPP_RUNTIME_CLASS_INIT(Debug_t4195163081_il2cpp_TypeInfo_var);
-		Debug_Log_m1731103628(NULL /*static, unused*/, L_5, /*hidden argument*/NULL);
-		float L_6 = V_0;
-		PlayerController_Walk_m1354146492(__this, L_6, /*hidden argument*/NULL);
-		goto IL_005e;
+		PlayerController_Walk_m1354146492(__this, L_2, /*hidden argument*/NULL);
+		goto IL_0034;
 	}
 
-IL_0037:
+IL_0022:
 	{
 		IL2CPP_RUNTIME_CLASS_INIT(CrossPlatformInputManager_t1974578728_il2cpp_TypeInfo_var);
-		float L_7 = CrossPlatformInputManager_GetAxis_m4235272194(NULL /*static, unused*/, _stringLiteral3381094468, /*hidden argument*/NULL);
-		V_1 = L_7;
-		float L_8 = V_1;
-		float L_9 = L_8;
-		Il2CppObject * L_10 = Box(Single_t4291918972_il2cpp_TypeInfo_var, &L_9);
-		IL2CPP_RUNTIME_CLASS_INIT(String_t_il2cpp_TypeInfo_var);
-		String_t* L_11 = String_Concat_m389863537(NULL /*static, unused*/, _stringLiteral2975664819, L_10, /*hidden argument*/NULL);
-		IL2CPP_RUNTIME_CLASS_INIT(Debug_t4195163081_il2cpp_TypeInfo_var);
-		Debug_Log_m1731103628(NULL /*static, unused*/, L_11, /*hidden argument*/NULL);
-		float L_12 = V_1;
-		PlayerController_Walk_m1354146492(__this, L_12, /*hidden argument*/NULL);
+		float L_3 = CrossPlatformInputManager_GetAxis_m4235272194(NULL /*static, unused*/, _stringLiteral3381094468, /*hidden argument*/NULL);
+		V_1 = L_3;
+		float L_4 = V_1;
+		PlayerController_Walk_m1354146492(__this, L_4, /*hidden argument*/NULL);
 	}
 
-IL_005e:
+IL_0034:
 	{
 		PlayerController_UpdateGroundDetection_m1618299985(__this, /*hidden argument*/NULL);
-		bool L_13 = __this->get__isJumping_4();
-		if (!L_13)
+		bool L_5 = __this->get__isJumping_4();
+		if (!L_5)
 		{
-			goto IL_0091;
+			goto IL_0067;
 		}
 	}
 	{
-		Rigidbody2D_t1743771669 * L_14 = __this->get__rigidbody_8();
-		float L_15 = __this->get__jumpForce_5();
-		Vector2_t4282066565  L_16;
-		memset(&L_16, 0, sizeof(L_16));
-		Vector2__ctor_m1517109030(&L_16, (0.0f), L_15, /*hidden argument*/NULL);
-		NullCheck(L_14);
-		Rigidbody2D_AddForce_m312397382(L_14, L_16, /*hidden argument*/NULL);
+		Rigidbody2D_t1743771669 * L_6 = __this->get__rigidbody_8();
+		float L_7 = __this->get__jumpForce_5();
+		Vector2_t4282066565  L_8;
+		memset(&L_8, 0, sizeof(L_8));
+		Vector2__ctor_m1517109030(&L_8, (0.0f), L_7, /*hidden argument*/NULL);
+		NullCheck(L_6);
+		Rigidbody2D_AddForce_m312397382(L_6, L_8, /*hidden argument*/NULL);
 		__this->set__isJumping_4((bool)0);
 	}
 
-IL_0091:
+IL_0067:
 	{
 		return;
 	}

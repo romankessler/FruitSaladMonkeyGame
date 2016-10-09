@@ -91,13 +91,13 @@ public class CameraFollow : MonoBehaviour
 
 		if (xVelocity != 0 || yVelocity != 0) {
 			// Zoom out on move
-			if(_camera.orthographicSize < 2f){
+			if(_camera.orthographicSize < 2.2f){
 				_camera.orthographicSize += 0.05f;
 			}
 			_isZoomingIn = false;
 		} else {
 			// Zoom in after 1 second still standing
-			if (_camera.orthographicSize > 1.0f) {
+			if (_camera.orthographicSize > 1.2f) {
 				
 				if(!_isZoomingIn){
 					_lastZoomInTimeStamp = DateTime.Now;

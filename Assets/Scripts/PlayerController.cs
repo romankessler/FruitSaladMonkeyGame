@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour
 
 	private bool _isJumping = false;
 
-	public float _jumpForce = (float)0.1;
+	private bool _isdoubleJumping = false;
+
+	private int _jumpCounter = 0;
+
+	[HideInInspector]
+	public float _jumpForce = (float)1;
 
 	[HideInInspector]
 	public bool _lookingRight = true;
@@ -30,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
 	public AudioClip JumpSoundEffect;
 
+	public AudioClip DoubleJumpSoundEffect;
+
 	public AudioClip LandedSoundEffect;
 
 	// Use this for initialization
@@ -42,9 +49,17 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		// jump
 		if ((Input.GetButtonDown (InputNames.JUMP) || CrossPlatformInputManager.GetButtonDown (InputNames.JUMP)) && IsGrounded) {
 			_isJumping = true;
 			AudioSource.PlayClipAtPoint (JumpSoundEffect, transform.position);
+		}
+
+		//double jump
+		if ((Input.GetButtonDown (InputNames.JUMP) || CrossPlatformInputManager.GetButtonDown (InputNames.JUMP)) && !IsGrounded && _jumpCounter < 1) {
+			_isdoubleJumping = true;
+			AudioSource.PlayClipAtPoint (DoubleJumpSoundEffect, transform.position);
+			_animator.SetTrigger ("DoubleJump");
 		}
 	}
 
@@ -72,8 +87,15 @@ public class PlayerController : MonoBehaviour
 
 		// Jump
 		if (_isJumping) {
-			_rigidbody.AddForce (new Vector2 (0, _jumpForce));
+			_rigidbody.AddForce (new Vector2 (0, _jumpForce*0.75f));
 			_isJumping = false;
+		}
+
+		// double jump
+		if (_isdoubleJumping) {
+			_rigidbody.AddForce (new Vector2 (0, _jumpForce*0.5f));
+			_isdoubleJumping = false;
+			_jumpCounter++;
 		}
 	}
 
@@ -99,7 +121,8 @@ public class PlayerController : MonoBehaviour
 
 		if (!oldValue && IsGrounded) {
 			_animator.SetTrigger ("Landed");
-			AudioSource.PlayClipAtPoint (LandedSoundEffect, transform.position);
+			AudioSource.PlayClipAtPoint (LandedSoundEffect, transform.position, 5f);
+			_jumpCounter = 0;
 		}
 	}
 
@@ -118,7 +141,11 @@ public class PlayerController : MonoBehaviour
 		WalkingSpeed = Mathf.Abs (hor);
 		//Debug.Log (WalkingSpeed);
 		_animator.SetFloat ("WalkingSpeed", WalkingSpeed);
-		_rigidbody.velocity = new Vector2 (hor * _maxSpeed, _rigidbody.velocity.y);
+
+		var velocityY = _rigidbody.velocity.y;
+		var velocityX = IsGrounded ? hor * _maxSpeed : hor*_maxSpeed * 1.3f;
+
+		_rigidbody.velocity = new Vector2 (velocityX, velocityY);
 		//Debug.Log (transform.position.x);
 	}
 

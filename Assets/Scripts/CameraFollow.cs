@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+
 
 [RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour
@@ -39,23 +41,25 @@ public class CameraFollow : MonoBehaviour
 		_cameraArea = _cameraAreaObject.GetComponent<BoxCollider2D> ();
 
 		_camera = _cameraAreaObject.GetComponentInChildren<Camera> ();
+	}
 
+	void UpdateFields(){
 		var cameraHeight = 2f * _camera.orthographicSize;
-//		Debug.Log ("cameraHeight="+cameraHeight);
+		//		Debug.Log ("cameraHeight="+cameraHeight);
 		var cameraWidth = cameraHeight * _camera.aspect;
-//		Debug.Log ("cameraWidth="+cameraWidth);
+		//		Debug.Log ("cameraWidth="+cameraWidth);
 
 		var areaXPos = _cameraAreaObject.transform.position.x;
 		var areaYPos = _cameraAreaObject.transform.position.y;
 
-//		Debug.Log ("areaXPos="+areaXPos);
-//		Debug.Log ("areaYPos="+areaYPos);
+		//		Debug.Log ("areaXPos="+areaXPos);
+		//		Debug.Log ("areaYPos="+areaYPos);
 
 		var areaWidth = _cameraArea.size.x;
 		var areaHeight = _cameraArea.size.y;
 
-//		Debug.Log ("areaWidth="+areaWidth);
-//		Debug.Log ("areaHeight="+areaHeight);
+		//		Debug.Log ("areaWidth="+areaWidth);
+		//		Debug.Log ("areaHeight="+areaHeight);
 
 		_xMin = areaXPos - areaWidth / 2 + cameraWidth/2 + _cameraArea.offset.x;
 		_xMax = _xMin + areaWidth - cameraWidth;
@@ -63,15 +67,55 @@ public class CameraFollow : MonoBehaviour
 		_yMin = areaYPos - areaHeight/2 + cameraHeight/2 + _cameraArea.offset.y;
 		_yMax = _yMin + areaHeight - cameraHeight;
 
-//		Debug.Log ("xMin=" + _xMin);
-//		Debug.Log ("xMax=" + _xMax);
-//		Debug.Log ("yMin=" + _yMin);
-//		Debug.Log ("yMax=" + _yMax);
+		//		Debug.Log ("xMin=" + _xMin);
+		//		Debug.Log ("xMax=" + _xMax);
+		//		Debug.Log ("yMin=" + _yMin);
+		//		Debug.Log ("yMax=" + _yMax);
+	}
+
+	void Update(){
+		UpdateFields ();
+	}
+
+	void LateUpdate(){
+
+	}
+
+	private DateTime _lastZoomInTimeStamp;
+
+	private bool _isZoomingIn;
+
+	void ZoomInOut(){
+		var yVelocity = _targetRigidBody.velocity.y;
+		var xVelocity = _targetRigidBody.velocity.x;
+
+		if (xVelocity != 0 || yVelocity != 0) {
+			// Zoom out on move
+			if(_camera.orthographicSize < 2f){
+				_camera.orthographicSize += 0.05f;
+			}
+			_isZoomingIn = false;
+		} else {
+			// Zoom in after 1 second still standing
+			if (_camera.orthographicSize > 1.0f) {
+				
+				if(!_isZoomingIn){
+					_lastZoomInTimeStamp = DateTime.Now;
+					_isZoomingIn = true;
+				}
+
+				if(_lastZoomInTimeStamp.AddSeconds(1) <= DateTime.Now){
+					_camera.orthographicSize -= 0.02f;
+				}
+			}
+		}
 	}
 	
 
 	void FixedUpdate()
 	{
+		ZoomInOut ();
+
 		var yVelocity = _targetRigidBody.velocity.y;
 		var targetYPosition = GetYTargetPosition (yVelocity);
 

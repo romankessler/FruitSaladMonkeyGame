@@ -10,6 +10,8 @@ public class CollisionDestroy : MonoBehaviour {
 	[SerializeField]
 	private  AudioClip _triggerSoundEffect;
 
+	public ParticleSystem ParticleSystemDestroy;
+
 	private Animator _animator;
 
 	// Use this for initialization
@@ -22,10 +24,18 @@ public class CollisionDestroy : MonoBehaviour {
 	{
 		if (other.CompareTag(TagNames.PLAYER) && _triggerArea.IsTouching(other))
 		{
-			_animator.SetTrigger("Dying");
-			_animator.SetBool("IsDead", true);
-			other.attachedRigidbody.AddForce (new Vector2 (0, 100));
-			Invoke("DestroyEnemy", 0.5f);
+			Dying (other);
+		}
+	}
+
+	private void Dying(Collider2D other){
+		_animator.SetTrigger("Dying");
+		_animator.SetBool("IsDead", true);
+		other.attachedRigidbody.AddForce (new Vector2 (0, 100));
+		Invoke("DestroyEnemy", 0.5f);
+
+		if (ParticleSystemDestroy != null) {
+			ParticleSystemDestroy.Play ();
 		}
 	}
 
@@ -38,10 +48,7 @@ public class CollisionDestroy : MonoBehaviour {
 	{
 		if (other.CompareTag(TagNames.PLAYER) && _triggerArea.IsTouching(other))
 		{
-			_animator.SetTrigger("Dying");
-			_animator.SetBool("IsDead", true);
-			other.attachedRigidbody.AddForce (new Vector2 (0, 100));
-			Invoke("DestroyEnemy", 0.5f);
+			Dying (other);
 		}
 	}
 }

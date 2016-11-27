@@ -4,11 +4,16 @@ using UnityEngine;
 
 using UnityStandardAssets.CrossPlatformInput;
 
+using System;
+
 [RequireComponent (typeof(Rigidbody2D))]
 [RequireComponent (typeof(Animator))]
+[RequireComponent (typeof(ParticleSystem))]
 public class PlayerController : MonoBehaviour
 {
 	private Animator _animator;
+
+	public ParticleSystem ParticleSystemDoubleJump;
 
 	[HideInInspector]
 	public bool IsGrounded = false;
@@ -25,7 +30,7 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector]
 	public bool _lookingRight = true;
 
-	public float _maxSpeed = 1;
+	public float _maxWalkingSpeed = 2.5f;
 
 	private Rigidbody2D _rigidbody;
 
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
 			_isdoubleJumping = true;
 			AudioSource.PlayClipAtPoint (DoubleJumpSoundEffect, transform.position);
 			_animator.SetTrigger ("DoubleJump");
+			ParticleSystemDoubleJump.Play ();
 		}
 	}
 
@@ -123,6 +129,7 @@ public class PlayerController : MonoBehaviour
 			_animator.SetTrigger ("Landed");
 			AudioSource.PlayClipAtPoint (LandedSoundEffect, transform.position, 5f);
 			_jumpCounter = 0;
+			ParticleSystemDoubleJump.Stop ();
 		}
 	}
 
@@ -136,14 +143,49 @@ public class PlayerController : MonoBehaviour
 
 	public float WalkingSpeed { get; set; }
 
+	private bool _isWalking;
+
+	private DateTime _startWalkingTimestamp;
+
+	private float _lastRunningVelocity;
+
+	private float GetMaxWalkingVelocity(float hor){
+		var velocity = IsGrounded ? hor * _maxWalkingSpeed : hor*_maxWalkingSpeed * 1.3f;
+		return velocity;
+	}
+
+	private float GetMaxRunningVelocity(float hor){
+		var maxSpeed = _maxWalkingSpeed * 2;
+
+		var velocity = IsGrounded ? hor * maxSpeed : hor * maxSpeed * 1.3f;
+		return velocity;
+	}
+
 	private void UpdateWalking (float hor)
-	{
+	{ 
 		WalkingSpeed = Mathf.Abs (hor);
 		//Debug.Log (WalkingSpeed);
 		_animator.SetFloat ("WalkingSpeed", WalkingSpeed);
 
+//		if(hor == 0){
+//			_isWalking = false;
+//		}
+
 		var velocityY = _rigidbody.velocity.y;
-		var velocityX = IsGrounded ? hor * _maxSpeed : hor*_maxSpeed * 1.3f;
+		var velocityX = GetMaxWalkingVelocity(hor);
+
+//		if(!_isWalking && hor != 0 && IsGrounded){
+//			_startWalkingTimestamp = DateTime.Now;
+//			_isWalking = true;
+//			_lastRunningVelocity = GetMaxWalkingVelocity (hor);
+//		}
+//
+//		if (_startWalkingTimestamp.AddMilliseconds (300) < DateTime.Now) {
+//			velocityX = GetMaxWalkingVelocity (hor);
+//			velocityX = _lastRunningVelocity + velocityX * 0.1f;
+//			velocityX = velocityX < 0 ? Mathf.Max (velocityX, GetMaxRunningVelocity (hor)) : Mathf.Min (velocityX, GetMaxRunningVelocity (hor));
+//			_lastRunningVelocity = velocityX;
+//		}
 
 		_rigidbody.velocity = new Vector2 (velocityX, velocityY);
 		//Debug.Log (transform.position.x);

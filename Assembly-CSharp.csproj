@@ -46,8 +46,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CollisionDestroy.cs" />
+     <Compile Include="Assets\ItemBanana.cs" />
+     <Compile Include="Assets\ParticelSystemController.cs" />
      <Compile Include="Assets\PatrolWalkingController.cs" />
      <Compile Include="Assets\Scripts\BackgroundParallaxController.cs" />
+     <Compile Include="Assets\Scripts\BananaController.cs" />
+     <Compile Include="Assets\Scripts\BananaSystem.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CollisionDamage.cs" />
      <Compile Include="Assets\Scripts\CollisionTrigger.cs" />

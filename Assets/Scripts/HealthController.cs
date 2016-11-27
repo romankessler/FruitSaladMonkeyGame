@@ -22,6 +22,8 @@ public class HealthController : MonoBehaviour
 
     private HeartSystem _heartSystem;
 
+	public ParticleSystem ParticleSystemAddHealth;
+
     public int StartLifePoints = 3;
 
     [Range (1, 10)]
@@ -108,6 +110,8 @@ public class HealthController : MonoBehaviour
     {
         _health += healthPoints;
         _health = Mathf.Min(GetMaxHealthPoints(), _health); // damit nicht über maxhealth
+
+		ParticleSystemAddHealth.Play ();
         
         UpdateHearts();
     }

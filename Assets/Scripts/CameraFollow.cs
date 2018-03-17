@@ -1,190 +1,190 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
-
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour
 {
-	private float _xMin;
+    private Camera _camera;
 
-	private float _xMax;
+    private BoxCollider2D _cameraArea;
 
-	private float _yMin;
+    private GameObject _cameraAreaObject;
 
-	private float _yMax;
+    [SerializeField] private GameObject _cameraTarget;
 
-	private float _lastYVelocity;
+    [SerializeField] private int _idleZoomInTime = 1;
 
-	private float _lastXVelocity;
+    private bool _isZoomingIn;
 
-	[SerializeField]
-	private GameObject _cameraTarget;
+    private float _lastXVelocity;
 
-	private Transform _target;
+    private float _lastYVelocity;
 
-	private Rigidbody2D _targetRigidBody;
+    private DateTime _lastZoomInTimeStamp;
 
-	private BoxCollider2D _cameraArea;
+    private Transform _target;
 
-	private GameObject _cameraAreaObject;
+    private Rigidbody2D _targetRigidBody;
 
-	private Camera _camera;
+    private float _xMax;
+    private float _xMin;
 
-	// Use this for initialization
-	void Start ()
-	{
-		_target = _cameraTarget.transform;
-		_targetRigidBody = _cameraTarget.GetComponent<Rigidbody2D> ();
+    private float _yMax;
 
-		_cameraAreaObject = GameObject.Find ("CameraArea");
-		_cameraArea = _cameraAreaObject.GetComponent<BoxCollider2D> ();
+    private float _yMin;
 
-		_camera = _cameraAreaObject.GetComponentInChildren<Camera> ();
-	}
+    // Use this for initialization
+    private void Start()
+    {
+        _target = _cameraTarget.transform;
+        _targetRigidBody = _cameraTarget.GetComponent<Rigidbody2D>();
 
-	void UpdateFields(){
-		var cameraHeight = 2f * _camera.orthographicSize;
-		//		Debug.Log ("cameraHeight="+cameraHeight);
-		var cameraWidth = cameraHeight * _camera.aspect;
-		//		Debug.Log ("cameraWidth="+cameraWidth);
+        _cameraAreaObject = GameObject.Find("CameraArea");
+        _cameraArea = _cameraAreaObject.GetComponent<BoxCollider2D>();
 
-		var areaXPos = _cameraAreaObject.transform.position.x;
-		var areaYPos = _cameraAreaObject.transform.position.y;
+        _camera = _cameraAreaObject.GetComponentInChildren<Camera>();
+    }
 
-		//		Debug.Log ("areaXPos="+areaXPos);
-		//		Debug.Log ("areaYPos="+areaYPos);
+    private void UpdateFields()
+    {
+        var cameraHeight = 2f * _camera.orthographicSize;
+        //		Debug.Log ("cameraHeight="+cameraHeight);
+        var cameraWidth = cameraHeight * _camera.aspect;
+        //		Debug.Log ("cameraWidth="+cameraWidth);
 
-		var areaWidth = _cameraArea.size.x;
-		var areaHeight = _cameraArea.size.y;
+        var areaXPos = _cameraAreaObject.transform.position.x;
+        var areaYPos = _cameraAreaObject.transform.position.y;
 
-		//		Debug.Log ("areaWidth="+areaWidth);
-		//		Debug.Log ("areaHeight="+areaHeight);
+        //		Debug.Log ("areaXPos="+areaXPos);
+        //		Debug.Log ("areaYPos="+areaYPos);
 
-		_xMin = areaXPos - areaWidth / 2 + cameraWidth/2 + _cameraArea.offset.x;
-		_xMax = _xMin + areaWidth - cameraWidth;
+        var areaWidth = _cameraArea.size.x;
+        var areaHeight = _cameraArea.size.y;
 
-		_yMin = areaYPos - areaHeight/2 + cameraHeight/2 + _cameraArea.offset.y;
-		_yMax = _yMin + areaHeight - cameraHeight;
+        //		Debug.Log ("areaWidth="+areaWidth);
+        //		Debug.Log ("areaHeight="+areaHeight);
 
-		//		Debug.Log ("xMin=" + _xMin);
-		//		Debug.Log ("xMax=" + _xMax);
-		//		Debug.Log ("yMin=" + _yMin);
-		//		Debug.Log ("yMax=" + _yMax);
-	}
+        _xMin = areaXPos - areaWidth / 2 + cameraWidth / 2 + _cameraArea.offset.x;
+        _xMax = _xMin + areaWidth - cameraWidth;
 
-	void Update(){
-		UpdateFields ();
-	}
+        _yMin = areaYPos - areaHeight / 2 + cameraHeight / 2 + _cameraArea.offset.y;
+        _yMax = _yMin + areaHeight - cameraHeight;
 
-	void LateUpdate(){
+        //		Debug.Log ("xMin=" + _xMin);
+        //		Debug.Log ("xMax=" + _xMax);
+        //		Debug.Log ("yMin=" + _yMin);
+        //		Debug.Log ("yMax=" + _yMax);
+    }
 
-	}
+    private void Update()
+    {
+        UpdateFields();
+    }
 
-	private DateTime _lastZoomInTimeStamp;
+    private void LateUpdate()
+    {
+    }
 
-	private bool _isZoomingIn;
+    private void ZoomInOut()
+    {
+        var yVelocity = _targetRigidBody.velocity.y;
+        var xVelocity = _targetRigidBody.velocity.x;
 
-	void ZoomInOut(){
-		var yVelocity = _targetRigidBody.velocity.y;
-		var xVelocity = _targetRigidBody.velocity.x;
+        if (xVelocity != 0 || yVelocity != 0)
+        {
+            // Zoom out on move
+            if (_camera.orthographicSize < 2.2f) _camera.orthographicSize += 0.05f;
+            _isZoomingIn = false;
+        }
+        else
+        {
+            // Zoom in after 1 second still standing
+            if (_camera.orthographicSize > 1.2f)
+            {
+                if (!_isZoomingIn)
+                {
+                    _lastZoomInTimeStamp = DateTime.Now;
+                    _isZoomingIn = true;
+                }
 
-		if (xVelocity != 0 || yVelocity != 0) {
-			// Zoom out on move
-			if(_camera.orthographicSize < 2.2f){
-				_camera.orthographicSize += 0.05f;
-			}
-			_isZoomingIn = false;
-		} else {
-			// Zoom in after 1 second still standing
-			if (_camera.orthographicSize > 1.2f) {
-				
-				if(!_isZoomingIn){
-					_lastZoomInTimeStamp = DateTime.Now;
-					_isZoomingIn = true;
-				}
+                if (_lastZoomInTimeStamp.AddSeconds(_idleZoomInTime) <= DateTime.Now) _camera.orthographicSize -= 0.02f;
+            }
+        }
+    }
 
-				if(_lastZoomInTimeStamp.AddSeconds(1) <= DateTime.Now){
-					_camera.orthographicSize -= 0.02f;
-				}
-			}
-		}
-	}
-	
 
-	void FixedUpdate()
-	{
-		ZoomInOut ();
+    private void FixedUpdate()
+    {
+        ZoomInOut();
 
-		var yVelocity = _targetRigidBody.velocity.y;
-		var targetYPosition = GetYTargetPosition (yVelocity);
+        var yVelocity = _targetRigidBody.velocity.y;
+        var targetYPosition = GetYTargetPosition(yVelocity);
 
 //		var xVelocity = _targetRigidBody.velocity.x;
 //		var targetXPosition = GetXTargetPosition (xVelocity);
 
-		transform.position = new Vector3 (
-			Mathf.Clamp (_targetRigidBody.position.x, _xMin, _xMax), 
-			Mathf.Clamp (targetYPosition, _yMin, _yMax), 
-			transform.position.z); 
-	}
+        transform.position = new Vector3(
+            Mathf.Clamp(_targetRigidBody.position.x, _xMin, _xMax),
+            Mathf.Clamp(targetYPosition, _yMin, _yMax),
+            transform.position.z);
+    }
 
-	private float GetYTargetPosition (float playerVelocity)
-	{
+    private float GetYTargetPosition(float playerVelocity)
+    {
 //		Debug.Log ("Player Y velocity =" + playerVelocity);
 
-		var cameraVelocity = playerVelocity;
+        var cameraVelocity = playerVelocity;
 
-		// ITS FOR SMOOTH CAMERA STOP
-		if (playerVelocity < 0.2 && playerVelocity > -0.2) {
-
-			cameraVelocity = _lastYVelocity - (_lastYVelocity / 15);
-		} 
+        // ITS FOR SMOOTH CAMERA STOP
+        if (playerVelocity < 0.2 && playerVelocity > -0.2) cameraVelocity = _lastYVelocity - _lastYVelocity / 15;
 
 //		Debug.Log ("Camera Y velocity =" + cameraVelocity);
 
-		// ITS TO STOP CAMERA SMOOTHING
-		if(cameraVelocity <= 0.01 && cameraVelocity >= -0.01){
-			_lastYVelocity = 0;
-			return _target.position.y;
-		}
+        // ITS TO STOP CAMERA SMOOTHING
+        if (cameraVelocity <= 0.01 && cameraVelocity >= -0.01)
+        {
+            _lastYVelocity = 0;
+            return _target.position.y;
+        }
 
 
-		_lastYVelocity = cameraVelocity;
+        _lastYVelocity = cameraVelocity;
 
-		var targetPosition = _target.position.y + (cameraVelocity < 0 ? cameraVelocity / 8 : cameraVelocity / 20);
+        var targetPosition = _target.position.y + (cameraVelocity < 0 ? cameraVelocity / 8 : cameraVelocity / 20);
 
-		return targetPosition;
-	}
+        return targetPosition;
+    }
 
-	private float GetXTargetPosition (float playerVelocity)
-	{
+    private float GetXTargetPosition(float playerVelocity)
+    {
 //		Debug.Log ("Player X velocity =" + playerVelocity);
 
-		var cameraVelocity = playerVelocity;
+        var cameraVelocity = playerVelocity;
 
-		// ITS FOR SMOOTH CAMERA STOP
-		//if (playerVelocity < 1.5 && playerVelocity > -1.5) {
-			cameraVelocity = _lastXVelocity - (_lastXVelocity == 0 ? playerVelocity / 15 : _lastXVelocity / 15);
-		//} 
+        // ITS FOR SMOOTH CAMERA STOP
+        //if (playerVelocity < 1.5 && playerVelocity > -1.5) {
+        cameraVelocity = _lastXVelocity - (_lastXVelocity == 0 ? playerVelocity / 15 : _lastXVelocity / 15);
+        //} 
 
 //		Debug.Log ("Camera X velocity =" + cameraVelocity);
 
-		// ITS TO STOP CAMERA SMOOTHING
-		if(cameraVelocity <= 0.01 && cameraVelocity >= -0.01){
-			_lastXVelocity = 0;
-			return _target.position.x;
-		}
+        // ITS TO STOP CAMERA SMOOTHING
+        if (cameraVelocity <= 0.01 && cameraVelocity >= -0.01)
+        {
+            _lastXVelocity = 0;
+            return _target.position.x;
+        }
 
 
-		_lastXVelocity = cameraVelocity;
+        _lastXVelocity = cameraVelocity;
 
 
-		// nach rechts
-		//transform.position.x
+        // nach rechts
+        //transform.position.x
 
 
-		var targetPosition = _target.position.x + (cameraVelocity / 5);
+        var targetPosition = _target.position.x + cameraVelocity / 5;
 
-		return targetPosition;
-	}
+        return targetPosition;
+    }
 }

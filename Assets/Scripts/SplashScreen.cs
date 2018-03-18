@@ -2,18 +2,18 @@
 using System.Collections;
 using System;
 using Holoville.HOTween;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 ///  This class is used to animate the splatch screen 
 /// Author : Pondomaniac Games
 /// </summary>
-public class SplatchScreen : MonoBehaviour
+public class SplashScreen : MonoBehaviour
 {
 		public GameObject _Logo;//The logo to animate
 		public float _FadeInTime;//The fadeIn animation time
 		public float _WaitingTime;//The stay time of the logo
 		public float _FadeOutTime;//The fadeOut animation time
-		public string _nextScene;//The next scene to load
 
 		// Used before initialization
 		void Awake ()
@@ -49,7 +49,7 @@ public class SplatchScreen : MonoBehaviour
 				mySequence.Play ();
 		
 				yield return new WaitForSeconds (_FadeInTime + _WaitingTime + _FadeOutTime);
-				Application.LoadLevel (_nextScene); 
+				Application.LoadLevel (SceneManager.GetActiveScene().buildIndex +1); 
 		
 		
 		}

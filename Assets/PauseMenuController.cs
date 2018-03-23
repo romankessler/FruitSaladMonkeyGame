@@ -24,16 +24,38 @@ public class PauseMenuController : MonoBehaviour
 
     }
 
+    private AudioSource[] allAudioSources;
+
+    public void StopAllAudio()
+    {
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource audioS in allAudioSources)
+        {
+            audioS.Stop();
+        }
+    }
+
+    public void PlayAllAudio()
+    {
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource audioS in allAudioSources)
+        {
+            audioS.Play();
+        }
+    }
+
     public void PauseGame()
     {
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        StopAllAudio();
     }
 
     public void ResumeGame()
     {
         _pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        PlayAllAudio();
     }
 
     public void MainMenu()

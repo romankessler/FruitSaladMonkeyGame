@@ -15,6 +15,9 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField]
     private AudioClip _pauseAudioClip;
 
+    [SerializeField]
+    private AudioClip _resumeAudioClip;
+
 
     // Use this for initialization
     void Start () {
@@ -62,6 +65,7 @@ public class PauseMenuController : MonoBehaviour
         _pauseMenu.SetActive(false);
         _pauseButton.SetActive(true);
         Time.timeScale = 1f;
+        AudioSource.PlayClipAtPoint(_resumeAudioClip, transform.position, 10f);
         PlayAllAudio();
     }
 

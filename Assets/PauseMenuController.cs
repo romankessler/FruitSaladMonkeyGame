@@ -12,9 +12,12 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField]
     private GameObject _pauseMenu;
 
+    [SerializeField]
+    private AudioClip _pauseAudioClip;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 	    _pauseMenu.SetActive(false);
     }
 	
@@ -29,31 +32,35 @@ public class PauseMenuController : MonoBehaviour
     public void StopAllAudio()
     {
         allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
-        foreach (AudioSource audioS in allAudioSources)
+        foreach (var audioS in allAudioSources)
         {
-            audioS.Stop();
+            audioS.Pause();
         }
     }
 
     public void PlayAllAudio()
     {
         allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
-        foreach (AudioSource audioS in allAudioSources)
+        foreach (var audioS in allAudioSources)
         {
-            audioS.Play();
+            audioS.UnPause();
         }
     }
 
     public void PauseGame()
     {
         _pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
+        _pauseButton.SetActive(false);
+        
         StopAllAudio();
+        AudioSource.PlayClipAtPoint(_pauseAudioClip, transform.position, 10f);
+        Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
         _pauseMenu.SetActive(false);
+        _pauseButton.SetActive(true);
         Time.timeScale = 1f;
         PlayAllAudio();
     }

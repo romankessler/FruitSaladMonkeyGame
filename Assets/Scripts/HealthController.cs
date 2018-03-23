@@ -29,6 +29,8 @@ public class HealthController : MonoBehaviour
 
     public AudioClip DamageSoundEffect;
 
+    public AudioClip DyingSoundEffect;
+
     // Use this for initialization
     private void Start()
     {
@@ -75,6 +77,24 @@ public class HealthController : MonoBehaviour
     {
         PlayerPrefs.SetFloat("_health", _health);
         PlayerPrefs.SetInt("_lifePoints", _lifePoints);
+    }
+
+    public void StopAllAudio()
+    {
+        var allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (var audioS in allAudioSources)
+        {
+            audioS.Pause();
+        }
+    }
+
+    public void PlayAllAudio()
+    {
+        var allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (var audioS in allAudioSources)
+        {
+            audioS.UnPause();
+        }
     }
 
     public void ApplyDamage(float damage)
@@ -133,15 +153,22 @@ public class HealthController : MonoBehaviour
 
     private void Dying()
     {
+        StopAllAudio();
+        AudioSource.PlayClipAtPoint(DyingSoundEffect, transform.position);
         _animator.SetTrigger("Dying");
         _animator.SetBool("IsDead", true);
         _playerController.enabled = false;
         _lifePoints--;
 
         if (_lifePoints <= 0)
+        {
             Invoke("StartGame", 2);
+        }
         else
+        {
             Invoke("RestartLevel", 2);
+        }
+        //PlayAllAudio();
     }
 
     private void RestartLevel()

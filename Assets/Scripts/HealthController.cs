@@ -154,7 +154,7 @@ public class HealthController : MonoBehaviour
     private void Dying()
     {
         StopAllAudio();
-        AudioSource.PlayClipAtPoint(DyingSoundEffect, transform.position);
+        AudioSource.PlayClipAtPoint(DyingSoundEffect, transform.position, 0.4f);
         _animator.SetTrigger("Dying");
         _animator.SetBool("IsDead", true);
         _playerController.enabled = false;
@@ -168,7 +168,6 @@ public class HealthController : MonoBehaviour
         {
             Invoke("RestartLevel", 2);
         }
-        //PlayAllAudio();
     }
 
     private void RestartLevel()

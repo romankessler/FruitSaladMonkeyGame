@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Constants;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +11,8 @@ public class HealthController : MonoBehaviour
 
     private float _health = 5;
 
+    private HeartSystem _heartSystem;
+
     private bool _isDamageable = true;
 
     private bool _isDead;
@@ -20,17 +21,16 @@ public class HealthController : MonoBehaviour
 
     private PlayerController _playerController;
 
-    private HeartSystem _heartSystem;
+    [Range(1, 10)] public int MaxHeartAmount = 3;
 
-	public ParticleSystem ParticleSystemAddHealth;
+    public ParticleSystem ParticleSystemAddHealth;
 
     public int StartLifePoints = 3;
 
-    [Range (1, 10)]
-    public int MaxHeartAmount = 3;
+    public AudioClip DamageSoundEffect;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
@@ -56,22 +56,22 @@ public class HealthController : MonoBehaviour
     {
         UpdateMaxHearts();
         var maxHealthPoints = _heartSystem.GetMaxHealthPoints();
-        Debug.Log("Max health Points = "+maxHealthPoints);
+        Debug.Log("Max health Points = " + maxHealthPoints);
         return maxHealthPoints;
     }
 
     private void UpdateHearts()
     {
-        _heartSystem.UpdateHearts((int)_health);
+        _heartSystem.UpdateHearts((int) _health);
     }
 
     private void UpdateMaxHearts()
     {
-        Debug.Log("Max Heart amount = "+ MaxHeartAmount);
+        Debug.Log("Max Heart amount = " + MaxHeartAmount);
         _heartSystem.UpdateMaxHeartAmount(MaxHeartAmount);
     }
 
-    void OnDestroy()
+    private void OnDestroy()
     {
         PlayerPrefs.SetFloat("_health", _health);
         PlayerPrefs.SetInt("_lifePoints", _lifePoints);
@@ -95,9 +95,7 @@ public class HealthController : MonoBehaviour
                 else
                 {
                     if (_isDamageable)
-                    {
                         Damaging();
-                    }
                 }
 
                 _isDamageable = false;
@@ -111,8 +109,8 @@ public class HealthController : MonoBehaviour
         _health += healthPoints;
         _health = Mathf.Min(GetMaxHealthPoints(), _health); // damit nicht über maxhealth
 
-		ParticleSystemAddHealth.Play ();
-        
+        ParticleSystemAddHealth.Play();
+
         UpdateHearts();
     }
 
@@ -124,10 +122,11 @@ public class HealthController : MonoBehaviour
 
     private void Damaging()
     {
+        AudioSource.PlayClipAtPoint(DamageSoundEffect, transform.position);
         _animator.SetTrigger("Damage");
     }
 
-    void ResetIsDamageable()
+    private void ResetIsDamageable()
     {
         _isDamageable = true;
     }
@@ -140,13 +139,9 @@ public class HealthController : MonoBehaviour
         _lifePoints--;
 
         if (_lifePoints <= 0)
-        {
             Invoke("StartGame", 2);
-        }
         else
-        {
             Invoke("RestartLevel", 2);
-        }
     }
 
     private void RestartLevel()
@@ -158,9 +153,7 @@ public class HealthController : MonoBehaviour
         _playerController.enabled = true;
 
         if (!_playerController._lookingRight)
-        {
             _playerController.Flip();
-        }
         // Level neu starten
     }
 

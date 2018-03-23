@@ -14,14 +14,14 @@ namespace UnityStandardAssets.CrossPlatformInput
         // depending on whether the USE_MOBILE_INPUT define is declared.
 
         // This define is set or unset by a menu item that is included with
-        // the Cross Platform Input package.
+        //the Cross Platform Input package.
 
 #if !UNITY_EDITOR
 	void OnEnable()
 	{
-		CheckEnableControlRig();
+	CheckEnableControlRig();
 	}
-	#endif
+#endif
 
         private void Start()
         {
@@ -59,7 +59,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
         private void Update()
         {
-            CheckEnableControlRig();
+            EnableControlRig(true);
         }
 #endif
 
@@ -67,8 +67,8 @@ namespace UnityStandardAssets.CrossPlatformInput
         private void CheckEnableControlRig()
         {
 #if MOBILE_INPUT
-		EnableControlRig(true);
-		#else
+        		EnableControlRig(true);
+#else
             EnableControlRig(false);
 #endif
         }

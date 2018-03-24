@@ -101,12 +101,15 @@ public class HealthController : MonoBehaviour
     {
         if (_isDamageable)
         {
-            _health -= damage;
-            _health = Mathf.Max(0, _health); // damit nicht unter 0
-            UpdateHearts();
+
 
             if (!_isDead)
             {
+                AudioSource.PlayClipAtPoint(DamageSoundEffect, transform.position);
+                _health -= damage;
+                _health = Mathf.Max(0, _health); // damit nicht unter 0
+                UpdateHearts();
+
                 if (_health <= 0)
                 {
                     _isDead = true;
@@ -142,7 +145,6 @@ public class HealthController : MonoBehaviour
 
     private void Damaging()
     {
-        AudioSource.PlayClipAtPoint(DamageSoundEffect, transform.position);
         _animator.SetTrigger("Damage");
     }
 
@@ -185,6 +187,6 @@ public class HealthController : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene(SceneNames.SCENE1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

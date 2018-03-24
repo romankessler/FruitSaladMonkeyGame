@@ -1,60 +1,32 @@
-﻿using System;
-using Assets.Scripts.Constants;
+﻿using Assets.Scripts.Constants;
 using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
 {
-    public enum ForceDirection
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
-
-    private const int MULTIPLIER = 100;
     public float _damage = 1;
+
     public int ForcePower = 0;
-    public ForceDirection ForeDirection;
+    public HealthController.ForceDirection ForeDirection;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(TagNames.PLAYER))
-        {
-            other.SendMessage("ApplyDamage", _damage);
-            AddForce(other);
-        }
+        ApplyDamageOnPlayer(other);
     }
 
-    private void AddForce(Collider2D other)
+    private void ApplyDamageOnPlayer(Collider2D other)
     {
-        var force = new Vector2();
-        switch (ForeDirection)
+        if (other.CompareTag(TagNames.PLAYER))
         {
-            case ForceDirection.Up:
-                force.y = ForcePower * MULTIPLIER;
-                break;
-            case ForceDirection.Down:
-                force.y = ForcePower * MULTIPLIER * -1;
-                break;
-            case ForceDirection.Left:
-                force.x = ForcePower * MULTIPLIER * -1;
-                break;
-            case ForceDirection.Right:
-                force.x = ForcePower * MULTIPLIER;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            var healthController = other.GetComponent<HealthController>();
+            if (healthController != null)
+            {
+                healthController.ApplyDamage(_damage, ForcePower, ForeDirection);
+            }
         }
-        other.attachedRigidbody.AddForce(force);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag(TagNames.PLAYER))
-        {
-            other.SendMessage("ApplyDamage", _damage);
-            AddForce(other);
-        }
+        ApplyDamageOnPlayer(other);
     }
 }

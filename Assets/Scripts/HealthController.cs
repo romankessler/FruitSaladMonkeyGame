@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Constants;
+﻿using System;
+using Assets.Scripts.Constants;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,15 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(HeartSystem))]
 public class HealthController : MonoBehaviour
 {
+    public enum ForceDirection
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
+    private const int MULTIPLIER = 30;
     private Animator _animator;
 
     private float _health = 5;
@@ -21,15 +31,16 @@ public class HealthController : MonoBehaviour
 
     private PlayerController _playerController;
 
+    public AudioClip DamageSoundEffect;
+
+    public AudioClip DyingSoundEffect;
+
     [Range(1, 10)] public int MaxHeartAmount = 3;
 
     public ParticleSystem ParticleSystemAddHealth;
 
     public int StartLifePoints = 3;
-
-    public AudioClip DamageSoundEffect;
-
-    public AudioClip DyingSoundEffect;
+    private Rigidbody2D _rigidbody;
 
     // Use this for initialization
     private void Start()
@@ -37,6 +48,7 @@ public class HealthController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
         _heartSystem = GetComponent<HeartSystem>();
+        _rigidbody = GetComponent<Rigidbody2D>();
 
         if (SceneManager.GetActiveScene().name == SceneNames.SCENE1)
         {
@@ -83,29 +95,48 @@ public class HealthController : MonoBehaviour
     {
         var allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         foreach (var audioS in allAudioSources)
-        {
             audioS.Pause();
-        }
     }
 
     public void PlayAllAudio()
     {
         var allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         foreach (var audioS in allAudioSources)
-        {
             audioS.UnPause();
-        }
     }
 
-    public void ApplyDamage(float damage)
+
+    private void AddForce(ForceDirection forceDirection, float forcePower)
+    {
+        var force = new Vector2();
+        switch (forceDirection)
+        {
+            case ForceDirection.Up:
+                force.y = forcePower * MULTIPLIER;
+                break;
+            case ForceDirection.Down:
+                force.y = forcePower * MULTIPLIER * -1;
+                break;
+            case ForceDirection.Left:
+                force.x = forcePower * MULTIPLIER * -1;
+                break;
+            case ForceDirection.Right:
+                force.x = forcePower * MULTIPLIER;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        _rigidbody.velocity = new Vector2();
+        _rigidbody.AddForce(force);
+    }
+
+    public void ApplyDamage(float damage, int forcePower, ForceDirection foreDirection)
     {
         if (_isDamageable)
-        {
-
-
             if (!_isDead)
             {
                 AudioSource.PlayClipAtPoint(DamageSoundEffect, transform.position);
+                AddForce(foreDirection, forcePower);
                 _health -= damage;
                 _health = Mathf.Max(0, _health); // damit nicht unter 0
                 UpdateHearts();
@@ -124,7 +155,6 @@ public class HealthController : MonoBehaviour
                 _isDamageable = false;
                 Invoke("ResetIsDamageable", 1); // Damage every second
             }
-        }
     }
 
     public void AddHealth(int healthPoints)
@@ -163,13 +193,9 @@ public class HealthController : MonoBehaviour
         _lifePoints--;
 
         if (_lifePoints <= 0)
-        {
             Invoke("StartGame", 2);
-        }
         else
-        {
             Invoke("RestartLevel", 2);
-        }
     }
 
     private void RestartLevel()
@@ -189,4 +215,6 @@ public class HealthController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+   
 }

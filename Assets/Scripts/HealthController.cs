@@ -41,6 +41,7 @@ public class HealthController : MonoBehaviour
 
     public int StartLifePoints = 3;
     private Rigidbody2D _rigidbody;
+    private FootStepSoundController _footStepSoundController;
 
     // Use this for initialization
     private void Start()
@@ -49,6 +50,7 @@ public class HealthController : MonoBehaviour
         _playerController = GetComponent<PlayerController>();
         _heartSystem = GetComponent<HeartSystem>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _footStepSoundController = GetComponent<FootStepSoundController>();
 
         if (SceneManager.GetActiveScene().name == SceneNames.SCENE1)
         {
@@ -185,6 +187,10 @@ public class HealthController : MonoBehaviour
 
     private void Dying()
     {
+        if (_footStepSoundController != null)
+        {
+            _footStepSoundController.PauseAudio();
+        }
         StopAllAudio();
         AudioSource.PlayClipAtPoint(DyingSoundEffect, transform.position, 0.4f);
         _animator.SetTrigger("Dying");

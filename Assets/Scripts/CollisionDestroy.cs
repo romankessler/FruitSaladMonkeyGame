@@ -1,54 +1,59 @@
-﻿using UnityEngine;
-using System.Collections;
-using Assets.Scripts.Constants;
+﻿using Assets.Scripts.Constants;
+using UnityEngine;
 
-public class CollisionDestroy : MonoBehaviour {
+public class CollisionDestroy : MonoBehaviour
+{
+    private Animator _animator;
 
-	[SerializeField]
-	private BoxCollider2D _triggerArea;
+    [SerializeField] private AudioClip _destroySoundEffect;
 
-	[SerializeField]
-	private  AudioClip _triggerSoundEffect;
+    private bool _isDying;
 
-	public ParticleSystem ParticleSystemDestroy;
+    private object _lockObject = new Object();
 
-	private Animator _animator;
+    [SerializeField] private BoxCollider2D _triggerArea;
 
-	// Use this for initialization
-	void Start()
-	{
-		_animator = GetComponent<Animator>();
-	}
+    [SerializeField] private AudioClip _triggerSoundEffect;
 
-	void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.CompareTag(TagNames.PLAYER) && _triggerArea.IsTouching(other))
-		{
-			Dying (other);
-		}
-	}
+    public ParticleSystem ParticleSystemDestroy;
 
-	private void Dying(Collider2D other){
-		_animator.SetTrigger("Dying");
-		_animator.SetBool("IsDead", true);
-		other.attachedRigidbody.AddForce (new Vector2 (0, 100));
-		Invoke("DestroyEnemy", 0.5f);
+    // Use this for initialization
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
-		if (ParticleSystemDestroy != null) {
-			ParticleSystemDestroy.Play ();
-		}
-	}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(TagNames.PLAYER) && _triggerArea.IsTouching(other))
+            Dying(other);
+    }
 
-	private void DestroyEnemy(){
-		AudioSource.PlayClipAtPoint(_triggerSoundEffect, transform.position);
-		Destroy(gameObject);
-	}
+    private void Dying(Collider2D other)
+    {
+        if (_isDying)
+            return;
 
-	void OnTriggerStay2D(Collider2D other)
-	{
-		if (other.CompareTag(TagNames.PLAYER) && _triggerArea.IsTouching(other))
-		{
-			Dying (other);
-		}
-	}
+        _isDying = true;
+        _animator.SetTrigger("Dying");
+        _animator.SetBool("IsDead", true);
+        other.attachedRigidbody.AddForce(new Vector2(0, 400));
+        AudioSource.PlayClipAtPoint(_triggerSoundEffect, transform.position);
+        Invoke("DestroyEnemy", 0.5f);
+
+        if (ParticleSystemDestroy != null)
+            ParticleSystemDestroy.Play();
+    }
+
+    private void DestroyEnemy()
+    {
+        AudioSource.PlayClipAtPoint(_destroySoundEffect, transform.position);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag(TagNames.PLAYER) && _triggerArea.IsTouching(other))
+            Dying(other);
+    }
 }

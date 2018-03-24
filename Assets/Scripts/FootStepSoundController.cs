@@ -30,7 +30,8 @@ public class FootStepSoundController : MonoBehaviour
         if (_playerController.IsGrounded
             && _playerController.WalkingSpeed > 0.1
             && !_audioSource.isPlaying
-            && _lastPlayTime.AddMilliseconds(_maxPlayIntervalMilliseconds) < DateTime.Now)
+            && _lastPlayTime.AddMilliseconds(_maxPlayIntervalMilliseconds) < DateTime.Now
+            && Time.timeScale > 0f)
         {
             _audioSource.volume = Random.Range(0.4f, 0.6f);
             _audioSource.pitch = Random.Range(0.8f, 1.1f);

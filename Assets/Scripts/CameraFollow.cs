@@ -136,7 +136,16 @@ public class CameraFollow : MonoBehaviour
         var cameraVelocity = playerVelocity;
 
         // ITS FOR SMOOTH CAMERA STOP
-        if (playerVelocity < 0.2 && playerVelocity > -0.2) cameraVelocity = _lastYVelocity - _lastYVelocity / 15;
+        if (playerVelocity < 0.8 && playerVelocity > -0.8)
+        {
+            cameraVelocity = _lastYVelocity - _lastYVelocity / 5;
+        }
+
+        // ITS FOR SMOOTH CAMERA STOP
+        if (playerVelocity < 0.2 && playerVelocity > -0.2)
+        {
+            cameraVelocity = _lastYVelocity - _lastYVelocity / 15;
+        }
 
 //		Debug.Log ("Camera Y velocity =" + cameraVelocity);
 

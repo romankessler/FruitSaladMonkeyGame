@@ -36,16 +36,16 @@ public class PlayerController : MonoBehaviour
 
 	public LayerMask _whatIsGround;
 
-	public Transform groundCheck;
+    public Transform groundCheck;
 
-	public AudioClip JumpSoundEffect;
+    public AudioClip JumpSoundEffect;
 
 	public AudioClip DoubleJumpSoundEffect;
 
 	public AudioClip LandedSoundEffect;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 		_rigidbody = GetComponent<Rigidbody2D> ();
 		_animator = GetComponent<Animator> ();
@@ -117,10 +117,10 @@ public class PlayerController : MonoBehaviour
 	private void UpdateGroundDetection ()
 	{
 		var oldValue = IsGrounded;
-        
-		var overlap = Physics2D.OverlapCircle (groundCheck.position, (float)0.1, _whatIsGround);
 
-		IsGrounded = _rigidbody.velocity.y <= 0 && overlap;
+        var overlap = Physics2D.OverlapCircle(groundCheck.position, (float)0.15, _whatIsGround);
+
+        IsGrounded = _rigidbody.velocity.y <= 0.8 && overlap;
 
 
 		_animator.SetBool ("IsGrounded", IsGrounded);
